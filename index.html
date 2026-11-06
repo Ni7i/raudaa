@@ -144,10 +144,10 @@ body.m-open #page,body.m-open .bar{transform:translateX(-36px)}
 .t-link:hover svg{transform:translateX(5px)}
 /* ── Kleiner Teaser zur Geschichte ── */
 .teaser{position:relative;overflow:hidden;isolation:isolate;background:#0e0e0d;color:#f2f0eb;text-align:center;padding:15vh 24px 14vh;margin-top:20px}
-.teaser video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:.3}
-.teaser::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 70% 75% at 50% 50%,rgba(14,14,13,.15),#0e0e0d 96%)}
-.t-ar{font:400 clamp(80px,10vw,160px)/1.3 "Amiri",serif}
-.t-q{max-width:36ch;margin:14px auto 38px;font:300 clamp(16px,1.5vw,21px)/1.45 var(--sans);color:#cfccc5}
+.teaser video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.teaser::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(10,10,9,.5),rgba(10,10,9,.78))}
+.t-logo{width:clamp(78px,7.5vw,118px);margin:0 auto;filter:brightness(0) invert(1)}
+.t-q{max-width:20ch;margin:34px auto 40px;font:300 clamp(24px,2.6vw,40px)/1.15 var(--sans);letter-spacing:-.015em}
 .fade{opacity:0;transform:translateY(20px);transition:opacity 1.2s ease,transform 1.4s cubic-bezier(.2,.7,.2,1)}
 .fade.in{opacity:1;transform:none}
 
@@ -324,8 +324,8 @@ body.m-open #page,body.m-open .bar{transform:translateX(-36px)}
 
 <section class="teaser" id="ueber" aria-label="Unsere Geschichte">
   <video muted loop playsinline preload="none" aria-hidden="true"></video>
-  <p class="t-ar fade" lang="ar">روضة</p>
-  <p class="t-q fade">Rauda heisst Garten. Benannt nach der Rawdah in Madinah, einem Garten von den Gärten des Paradieses.</p>
+  <img class="t-logo fade" src="assets/logo-rauda-sw.png" alt="Rauda روضة">
+  <p class="t-q fade">Der Ort, den wir selbst gesucht haben.</p>
   <a class="t-link up fade" href="geschichte.html">Unsere Geschichte <svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 .8l4 3.7-4 3.7"/></svg></a>
 </section>
 <footer class="up">
@@ -416,7 +416,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 
 /* Teaser: Video nur abspielen, wenn sichtbar; sanft einblenden */
 const tz=document.querySelector('.teaser'),tv=tz.querySelector('video');
-new IntersectionObserver(([e])=>{if(e.isIntersecting){if(!tv.src)tv.src='assets/natur/duene-'+q+'.mp4';tv.play().catch(()=>{})}else tv.pause()}).observe(tz);
+new IntersectionObserver(([e])=>{if(e.isIntersecting){if(!tv.src)tv.src='assets/natur/masjid-'+q+'.mp4';tv.play().catch(()=>{})}else tv.pause()}).observe(tz);
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -12% 0px'});
 document.querySelectorAll('.fade').forEach(el=>io.observe(el));
 
