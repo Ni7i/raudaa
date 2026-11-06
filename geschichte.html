@@ -117,12 +117,12 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 .f-form input{flex:1;border:0;background:none;padding:11px 0;font:inherit;font-size:13px;outline:none;min-width:0}
 .f-form button{padding:11px 0 11px 16px;white-space:nowrap}
 .f-form button:hover{opacity:.55}
-.f-word{padding:0 28px;margin-top:40px}
-.fw-in{aspect-ratio:3.3/1;overflow:hidden}
-.fw-row{display:flex;align-items:center;justify-content:space-between;width:100%}
-.fw-row i{display:block;background:#ebebe9}
+.f-word{margin-top:40px}
+.fw-in{position:relative;overflow:hidden;aspect-ratio:2.62/1}
+.fw-row{position:absolute;top:0;left:-6%;width:112%;display:flex;align-items:flex-end;justify-content:space-between}
+.fw-row i{display:block;background:#ece6da}
 .fw-row .fl{width:27.5%;aspect-ratio:964/1454;-webkit-mask:url(assets/logo-rauda-sw.png) center/contain no-repeat;mask:url(assets/logo-rauda-sw.png) center/contain no-repeat}
-.fw-row .fs{width:100%;aspect-ratio:822/314;-webkit-mask:url(assets/logo-schriftzug.png) center/contain no-repeat;mask:url(assets/logo-schriftzug.png) center/contain no-repeat}
+.fw-row .fs{width:67.5%;aspect-ratio:822/314;-webkit-mask:url(assets/logo-schriftzug.png) center/contain no-repeat;mask:url(assets/logo-schriftzug.png) center/contain no-repeat}
 .legal{position:relative;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 28px 22px;font-size:11px;color:var(--grey);border-top:1px solid var(--line);background:#fff}
 
 /* ── Menü (von rechts) ── */
@@ -344,7 +344,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
         <button type="submit" class="up">Anmelden</button>
       </form></div>
   </div>
-  <div class="f-word" aria-hidden="true"><div class="fw-in"><div class="fw-row"><i class="fs"></i></div></div></div>
+  <div class="f-word" aria-hidden="true"><div class="fw-in"><div class="fw-row"><i class="fl"></i><i class="fs"></i></div></div></div>
   <div class="legal"><span>© 2026 Rauda · Zürich</span><span><a href="#">Datenschutz</a> · <a href="#">AGB</a> · <a href="#">Impressum</a></span></div>
 </footer>
 </div>
