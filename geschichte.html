@@ -7,7 +7,7 @@
 <meta name="description" content="Rauda · روضة. Modern, schlicht und für Muslime. In Zürich gegründet.">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Fraunces:opsz,wght@9..144,400..600&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#111;--grey:#7a7a7a;--tile:#f3f2ef;--line:#e7e6e2;
   --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;--bh:78px;--lh:36px}
@@ -117,12 +117,11 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 .f-form input{flex:1;border:0;background:none;padding:11px 0;font:inherit;font-size:13px;outline:none;min-width:0}
 .f-form button{padding:11px 0 11px 16px;white-space:nowrap}
 .f-form button:hover{opacity:.55}
-.f-word{margin-top:40px}
-.fw-in{position:relative;overflow:hidden;aspect-ratio:2.62/1}
-.fw-row{position:absolute;top:0;left:-6%;width:112%;display:flex;align-items:flex-end;justify-content:space-between}
-.fw-row i{display:block;background:#ece6da}
-.fw-row .fl{width:27.5%;aspect-ratio:964/1454;-webkit-mask:url(assets/logo-rauda-sw.png) center/contain no-repeat;mask:url(assets/logo-rauda-sw.png) center/contain no-repeat}
-.fw-row .fs{width:67.5%;aspect-ratio:822/314;-webkit-mask:url(assets/logo-schriftzug.png) center/contain no-repeat;mask:url(assets/logo-schriftzug.png) center/contain no-repeat}
+.f-word{container-type:inline-size;margin-top:40px}
+.fw-in{--p:28px;--hw:calc((100cqw - var(--p)) / 3.136);position:relative;height:calc(var(--hw) * .84);overflow:hidden}
+.fw-in i{position:absolute;display:block;background:#ece6da}
+.fw-in .fl{left:var(--p);bottom:0;height:calc(var(--hw) * .78);width:calc(var(--hw) * .517);-webkit-mask:url(assets/logo-rauda-sw.png) 0 0/100% 100% no-repeat;mask:url(assets/logo-rauda-sw.png) 0 0/100% 100% no-repeat}
+.fw-in .fs{left:calc(var(--p) + var(--hw) * .557);top:0;height:var(--hw);width:calc(var(--hw) * 2.618);-webkit-mask:url(assets/logo-schriftzug.png) 0 0/100% 100% no-repeat;mask:url(assets/logo-schriftzug.png) 0 0/100% 100% no-repeat}
 .legal{position:relative;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 28px 22px;font-size:11px;color:var(--grey);border-top:1px solid var(--line);background:#fff}
 
 /* ── Menü (von rechts) ── */
@@ -217,6 +216,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
   .f-mid{grid-template-columns:repeat(3,1fr);padding:44px 18px 10px;gap:30px 20px}
   .f-news{grid-column:1/-1;order:-1;margin-bottom:6px}.f-form{max-width:none}
   .legal{padding:16px 18px 20px}
+  .fw-in{--p:18px}
   .drawer{padding:0 24px 26px}
   .st-in{padding-left:20px;padding-right:20px}
   .swap li{grid-template-columns:44px 1fr;row-gap:6px;gap:6px 14px;font-size:clamp(30px,10vw,46px)}
@@ -237,17 +237,17 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 
 <header class="bar" id="bar">
   <nav class="nav up" aria-label="Schwestern">
-    <a href="index.html?cat=abaya#shop">Abāyāt</a>
-    <a href="index.html?cat=khimar#shop">Khumur</a>
-    <a href="index.html?cat=niqab#shop">Niqāb</a>
-    <a href="index.html?cat=kimono#shop">Kimonos</a>
+    <a href="shop.html?cat=abaya">Abāyāt</a>
+    <a href="shop.html?cat=khimar">Khumur</a>
+    <a href="shop.html?cat=niqab">Niqāb</a>
+    <a href="shop.html?cat=kimono">Kimonos</a>
   </nav>
   <a href="index.html" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
   <div class="right">
     <nav class="nav up" aria-label="Brüder und mehr">
-      <a href="index.html?cat=thobe#shop">Thobes</a>
-      <a href="index.html?cat=kufi#shop">Kufis</a>
-      <a href="index.html?cat=duft#shop">Autodüfte</a>
+      <a href="shop.html?cat=thobe">Thobes</a>
+      <a href="shop.html?cat=kufi">Kufis</a>
+      <a href="shop.html?cat=duft">Autodüfte</a>
     </nav>
     <div class="icons">
       <a href="#" aria-label="Warenkorb"><svg viewBox="0 0 24 24"><path d="M4.5 8h15l-1.1 12.5H5.6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></a>
@@ -260,16 +260,16 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 <aside class="drawer up" aria-label="Menü">
   <div class="x"><button aria-label="Menü schliessen" data-close><svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
   <div class="grp">Schwestern</div>
-  <a class="l" href="index.html?cat=abaya#shop"><span>‘Abāyāt</span></a>
-  <a class="l" href="index.html?cat=khimar#shop"><span>Khumur</span></a>
-  <a class="l" href="index.html?cat=niqab#shop"><span>Niqāb</span></a>
-  <a class="l" href="index.html?cat=kimono#shop"><span>Kimonos</span></a>
+  <a class="l" href="shop.html?cat=abaya"><span>‘Abāyāt</span></a>
+  <a class="l" href="shop.html?cat=khimar"><span>Khumur</span></a>
+  <a class="l" href="shop.html?cat=niqab"><span>Niqāb</span></a>
+  <a class="l" href="shop.html?cat=kimono"><span>Kimonos</span></a>
   <div class="grp">Brüder</div>
-  <a class="l" href="index.html?cat=thobe#shop"><span>Thobes</span></a>
-  <a class="l" href="index.html?cat=kufi#shop"><span>Kufis</span></a>
+  <a class="l" href="shop.html?cat=thobe"><span>Thobes</span></a>
+  <a class="l" href="shop.html?cat=kufi"><span>Kufis</span></a>
   <div class="grp">Mehr</div>
-  <a class="l" href="index.html?cat=duft#shop"><span>Autodüfte</span></a>
-  <a class="l" href="index.html?cat=acc#shop"><span>Accessoires</span></a>
+  <a class="l" href="shop.html?cat=duft"><span>Autodüfte</span></a>
+  <a class="l" href="shop.html?cat=acc"><span>Accessoires</span></a>
   <a class="l" href="geschichte.html" data-close><span>Unsere Geschichte</span></a>
   <div class="small">
     <a href="#" data-close>Suche</a>
@@ -325,7 +325,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
   </div>
 </section>
 
-<div class="why-cta up"><a class="t-link" href="index.html#shop">Zur Kollektion <svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 .8l4 3.7-4 3.7"/></svg></a></div>
+<div class="why-cta up"><a class="t-link" href="shop.html">Zur Kollektion <svg viewBox="0 0 16 9"><path d="M0 4.5h15M11 .8l4 3.7-4 3.7"/></svg></a></div>
 </main>
 <footer class="up">
   <div class="sep" aria-hidden="true"><svg viewBox="0 0 62 28"><path d="M31 13C26 6 15 3.5 10 6.5S6 15.5 13 16s13-1.2 18-3z"/><path d="M31 13c5-7 16-9.5 21-6.5s4 9-3 9.5-13-1.2-18-3z"/><path d="M31 13c-2.5 4-6.5 7.5-11 9.5M31 13c2.5 4 6.5 7.5 11 9.5"/></svg></div>
@@ -335,7 +335,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     <div><svg viewBox="0 0 26 26"><path d="M3.5 8.5 13 4l9.5 4.5v10L13 23l-9.5-4.5z"/><path d="M3.5 8.5 13 13l9.5-4.5M13 13v10"/></svg>Gratis Versand<span>Ab CHF 200.– in der Schweiz</span></div>
   </div>
   <div class="f-mid">
-    <div><h4>Shop</h4><ul><li><a href="index.html?cat=abaya#shop">Abāyāt</a></li><li><a href="index.html?cat=khimar#shop">Khumur</a></li><li><a href="index.html?cat=thobe#shop">Thobes</a></li><li><a href="index.html?cat=kufi#shop">Kufis</a></li><li><a href="index.html?cat=duft#shop">Autodüfte</a></li></ul></div>
+    <div><h4>Shop</h4><ul><li><a href="shop.html?cat=abaya">Abāyāt</a></li><li><a href="shop.html?cat=khimar">Khumur</a></li><li><a href="shop.html?cat=thobe">Thobes</a></li><li><a href="shop.html?cat=kufi">Kufis</a></li><li><a href="shop.html?cat=duft">Autodüfte</a></li></ul></div>
     <div><h4>Rauda</h4><ul><li><a href="geschichte.html">Unsere Geschichte</a></li><li><a href="#">Journal</a></li><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li></ul></div>
     <div><h4>Hilfe</h4><ul><li><a href="mailto:info@rauda.ch">Kontakt</a></li><li><a href="#">Versand</a></li><li><a href="#">Rückgabe</a></li><li><a href="#">Grössen</a></li></ul></div>
     <div class="f-news"><h4>Newsletter</h4><p>Neue Kollektionen zuerst und 10 % auf deine erste Bestellung.</p>
@@ -344,7 +344,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
         <button type="submit" class="up">Anmelden</button>
       </form></div>
   </div>
-  <div class="f-word" aria-hidden="true"><div class="fw-in"><div class="fw-row"><i class="fl"></i><i class="fs"></i></div></div></div>
+  <div class="f-word" aria-hidden="true"><div class="fw-in"><i class="fl"></i><i class="fs"></i></div></div>
   <div class="legal"><span>© 2026 Rauda · Zürich</span><span><a href="#">Datenschutz</a> · <a href="#">AGB</a> · <a href="#">Impressum</a></span></div>
 </footer>
 </div>
