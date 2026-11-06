@@ -30,7 +30,7 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .bar.solid.dark .logo{filter:brightness(0) invert(1)}
 .lockup{display:flex;align-items:center;gap:calc(var(--lh)*.2)}
 .lockup .ln{flex:none;width:1px;height:calc(var(--lh)*.78);background:currentColor;opacity:.55}
-.lockup .wm{height:calc(var(--lh)*.8)!important}
+.lockup .wm{height:calc(var(--lh)*.85)!important}
 .bar .logo{height:var(--lh);filter:brightness(0) invert(1);transition:filter .4s}
 .bar.solid .logo{filter:none}
 .nav{display:flex;align-items:center;gap:clamp(18px,2vw,30px);white-space:nowrap}
@@ -117,8 +117,12 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 .f-form input{flex:1;border:0;background:none;padding:11px 0;font:inherit;font-size:13px;outline:none;min-width:0}
 .f-form button{padding:11px 0 11px 16px;white-space:nowrap}
 .f-form button:hover{opacity:.55}
-.f-word{position:relative;height:min(400px,56vw);overflow:hidden;margin-top:40px}
-.f-word i{position:absolute;left:50%;top:0;transform:translateX(-50%);width:min(450px,68vw);aspect-ratio:964/1454;background:#ece6da;-webkit-mask:url(assets/logo-rauda-sw.png) center top/contain no-repeat;mask:url(assets/logo-rauda-sw.png) center top/contain no-repeat}
+.f-word{padding:0 28px;margin-top:40px}
+.fw-in{aspect-ratio:2.74/1;overflow:hidden}
+.fw-row{display:flex;align-items:center;justify-content:space-between;width:100%}
+.fw-row i{display:block;background:#ece6da}
+.fw-row .fl{width:27.5%;aspect-ratio:964/1454;-webkit-mask:url(assets/logo-rauda-sw.png) center/contain no-repeat;mask:url(assets/logo-rauda-sw.png) center/contain no-repeat}
+.fw-row .fs{width:67.5%;aspect-ratio:822/314;-webkit-mask:url(assets/logo-schriftzug.png) center/contain no-repeat;mask:url(assets/logo-schriftzug.png) center/contain no-repeat}
 .legal{position:relative;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:18px 28px 22px;font-size:11px;color:var(--grey);border-top:1px solid var(--line);background:#fff}
 
 /* ── Menü (von rechts) ── */
@@ -193,7 +197,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     <a href="#shop" data-cat="niqab">Niqāb</a>
     <a href="#shop" data-cat="kimono">Kimonos</a>
   </nav>
-  <a href="#" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo lg" src="assets/logo-rauda-sw.png" alt=""><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
+  <a href="#" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
   <div class="right">
     <nav class="nav up" aria-label="Brüder und mehr">
       <a href="#shop" data-cat="thobe">Thobes</a>
@@ -348,7 +352,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
         <button type="submit" class="up">Anmelden</button>
       </form></div>
   </div>
-  <div class="f-word" aria-hidden="true"><i></i></div>
+  <div class="f-word" aria-hidden="true"><div class="fw-in"><div class="fw-row"><i class="fl"></i><i class="fs"></i></div></div></div>
   <div class="legal"><span>© 2026 Rauda · Zürich</span><span><a href="#">Datenschutz</a> · <a href="#">AGB</a> · <a href="#">Impressum</a></span></div>
 </footer>
 </div>
