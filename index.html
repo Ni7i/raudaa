@@ -28,7 +28,7 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .bar.solid::before{opacity:0}
 .bar.solid.dark{background:rgba(14,14,13,.72);color:#f2f0eb}
 .bar.solid.dark .logo{filter:brightness(0) invert(1)}
-.lockup{display:flex;align-items:center;gap:calc(var(--lh)*.36)}
+.lockup{display:flex;align-items:center;gap:calc(var(--lh)*.2)}
 .lockup .ln{flex:none;width:1px;height:calc(var(--lh)*.78);background:currentColor;opacity:.55}
 .lockup .wm{height:calc(var(--lh)*.6)!important}
 .bar .logo{height:var(--lh);filter:brightness(0) invert(1);transition:filter .4s}
@@ -53,12 +53,12 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .reel-bars b{position:absolute;inset:0;background:rgba(255,255,255,.85);transform-origin:left center;transform:scaleX(0)}
 .intro::after{content:"";position:absolute;inset:0;z-index:1;background:rgba(0,0,0,.2);transition:background .7s ease}
 .intro.light::after{background:radial-gradient(ellipse 40% 42% at 50% 50%,rgba(0,0,0,.5),rgba(0,0,0,.24))}
-.intro .mark{position:absolute;left:50%;top:50%;z-index:2;display:flex;flex-direction:column;align-items:center;gap:clamp(26px,4vh,40px);transform:translate(-50%,-50%);opacity:0;animation:markIn 1.8s .3s ease-out forwards;filter:brightness(0) invert(1) drop-shadow(0 4px 24px rgba(0,0,0,.35))}
+.intro .mark{position:absolute;left:50%;top:50%;z-index:2;display:flex;flex-direction:column;align-items:center;gap:clamp(18px,2.6vh,28px);transform:translate(-50%,-50%);opacity:0;animation:markIn 1.8s .3s ease-out forwards;filter:brightness(0) invert(1) drop-shadow(0 4px 24px rgba(0,0,0,.35))}
 @keyframes markIn{to{opacity:1}}
 .mark .m-lock{display:flex;max-width:88vw;align-items:center;gap:clamp(20px,2.4vw,34px)}
 .mark .m-logo{width:clamp(62px,6.4vw,96px)}
 .mark .m-line{flex:none;width:1px;height:clamp(70px,7.5vw,112px);background:#fff;opacity:.75}
-.mark .m-word{width:clamp(150px,15.5vw,236px)}
+.mark .m-word{width:clamp(200px,18vw,270px)}
 .mark .m-slogan{font:italic 300 clamp(22px,2.3vw,34px)/1.2 "Cormorant Garamond",Georgia,serif;letter-spacing:.01em;color:#fff;white-space:nowrap}
 
 /* ── Kategorien: Bilder bis zum Rand ── */
@@ -193,7 +193,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     <a href="#shop" data-cat="niqab">Niqāb</a>
     <a href="#shop" data-cat="kimono">Kimonos</a>
   </nav>
-  <a href="#" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo lg" src="assets/logo-rauda-sw.png" alt=""><i class="ln"></i><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
+  <a href="#" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo lg" src="assets/logo-rauda-sw.png" alt=""><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
   <div class="right">
     <nav class="nav up" aria-label="Brüder und mehr">
       <a href="#shop" data-cat="thobe">Thobes</a>
@@ -234,7 +234,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 <section class="intro" aria-label="Rauda">
   <video class="hv" muted autoplay playsinline preload="auto" aria-hidden="true"></video>
   <video class="hv" muted playsinline preload="auto" aria-hidden="true" style="opacity:0"></video>
-  <div class="mark"><div class="m-lock"><img class="m-logo" src="assets/logo-rauda-sw.png" alt=""><i class="m-line"></i><img class="m-word" src="assets/logo-schriftzug.png" alt="Rauda"></div><p class="m-slogan">Ein Ort für uns.</p></div>
+  <div class="mark"><img class="m-word" src="assets/logo-schriftzug.png" alt="Rauda"><p class="m-slogan">Ein Ort für uns.</p></div>
   <div class="reel-bars" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
 </section>
 
