@@ -88,8 +88,13 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .btn{display:inline-block;padding:15px 24px;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;border:1px solid currentColor;transition:background .3s,color .3s,border-color .3s}
 .sp .cta{color:var(--ink)}
 .sp:hover .btn{background:var(--ink);border-color:var(--ink);color:#fff}
+.sp.full img{left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;transform:none}
+.sp.full:hover img{transform:scale(1.015)}
+.sp.full::after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(transparent,rgba(0,0,0,.45));pointer-events:none}
+.sp.full .cta{color:#fff;z-index:1}
+.sp.full:hover .btn{background:#fff;border-color:#fff;color:var(--ink)}
 .pick{color:#fff;background:#141414}
-.pick{width:min(1312px,calc(100% - 56px));margin:72px auto 0}
+.pick{width:100%;margin:72px 0 0}
 .pick img{aspect-ratio:21/9;height:auto;object-position:50% 30%}
 .pick::after{content:"";position:absolute;inset:auto 0 0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,.5));pointer-events:none}
 .pick .cta{z-index:1}
@@ -192,7 +197,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 @media (max-width:560px){
   .up{font-size:11px}
   .split{grid-template-columns:1fr}
-  .pick{width:calc(100% - 36px);margin-top:48px}
+  .pick{margin-top:48px}
   .pick img{aspect-ratio:1/1}
   .sp img{top:3%;height:72%}
   .ins-grid{grid-template-columns:1fr;gap:44px}
@@ -206,7 +211,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 <body>
 
 <header class="bar" id="bar">
-  <div class="left"><button class="menu-btn" data-open aria-label="Menü öffnen"><span class="burger"><i></i><i></i><i></i></span></button></div>
+  <div class="left"><button class="menu-btn" data-open aria-label="Menü öffnen"><span class="burger"><i></i><i></i></span></button><a href="shop.html" class="m-search" aria-label="Suche"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg></a></div>
   <a href="#" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
   <div class="right">
     <div class="icons">
@@ -272,8 +277,8 @@ footer{position:relative;overflow:hidden;padding-top:50px}
   </section>
 
   <section class="split" aria-label="Frauen und Männer">
-    <a class="sp" href="shop.html?cat=schwestern">
-      <img src="assets/home/frauen.jpg" alt="Khimār mit Niqāb in Schwarz auf einer Schneiderpuppe">
+    <a class="sp full" href="shop.html?cat=schwestern">
+      <img src="assets/home/frauen-puppe.jpg" alt="Schwarzer Khimār mit Niqāb auf einer Puppe vor rosa Wand mit Kirschblüten">
       <div class="cta"><div class="cta-in"><span class="cta-t">Frauen</span><span class="btn">Entdecken</span></div></div>
     </a>
     <a class="sp" href="shop.html?cat=brueder">
@@ -375,14 +380,9 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){
 }
 
 
-/* Kopfzeile: Logo wächst beim Scrollen, nach dem Video milchig-weiss */
-const root=document.documentElement,bar=document.getElementById('bar'),intro=document.querySelector('.intro'),story=document.querySelector('.story-block');
-const small=innerWidth<700;
-const L0=small?28:33, L1=small?31:38, B0=small?56:66, B1=small?60:70;
+/* Kopfzeile: nach dem Video milchig-weiss (Grösse fix wie Dior) */
+const bar=document.getElementById('bar'),intro=document.querySelector('.intro'),story=document.querySelector('.story-block');
 function onScroll(){
-  const end=intro.offsetHeight*1.1, p=Math.min(1,Math.max(0,scrollY/end)), e=p*(2-p);
-  root.style.setProperty('--lh',(L0+(L1-L0)*e).toFixed(1)+'px');
-  root.style.setProperty('--bh',(B0+(B1-B0)*e).toFixed(1)+'px');
   bar.classList.toggle('solid',scrollY>intro.offsetHeight-80);
   const sr=story.getBoundingClientRect();bar.classList.toggle('dark',sr.top<bar.offsetHeight/2&&sr.bottom>bar.offsetHeight/2);
 }

@@ -167,3 +167,26 @@
   .recs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .c-head,.c-ship,.c-items,.c-foot{padding-left:22px;padding-right:22px}
 }
+
+/* Kopfzeile 1:1 wie Dior: 80px hoch, Menü bei 40px, Logo ~83px breit, Icons 24px im 56px-Raster */
+html:root{--bh:80px}
+html .bar{height:80px;padding:0 36px 0 40px;gap:0}
+html .bar .lockup .wm{height:32px!important;width:auto}
+html .bar .left{gap:12px}
+html .bar .menu-btn{gap:0}
+html .bar .burger{width:24px;height:24px;padding:0 5px;gap:4.8px;box-sizing:border-box}
+html .bar .burger i{height:1.4px;border-radius:1px}
+html .bar .icons{gap:32px;transform:translateY(-2px)}
+html .bar .icons svg,.m-search svg{width:24px;height:24px;stroke:currentColor;stroke-width:1.4;fill:none;display:block}
+.m-search{display:none}
+@media (max-width:768px){
+  html:root{--bh:64px}
+  html .bar{height:64px;padding:0 16px}
+  html .bar .lockup .wm{height:25px!important}
+  html .bar .icons{gap:12px}
+  html .bar .icons .ic-search{display:none}
+  .m-search{display:block;opacity:.62}
+}
+
+/* Menü offen: Seite wird heller und weich (wie Dior) */
+html .scrim{background:rgba(160,162,164,.3);-webkit-backdrop-filter:blur(25px);backdrop-filter:blur(25px);transition:opacity .36s cubic-bezier(.31,0,.13,1)}
