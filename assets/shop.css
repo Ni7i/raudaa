@@ -171,7 +171,7 @@
 /* Kopfzeile 1:1 wie Dior: 80px hoch, Menü bei 40px, Logo ~83px breit, Icons 24px im 56px-Raster */
 html:root{--bh:80px}
 html .bar{height:80px;padding:0 36px 0 40px;gap:0}
-html .bar .lockup .wm{height:38px!important;width:auto}
+html .bar .lockup .wm{height:42px!important;width:auto}
 html .bar .left{gap:12px}
 html .bar .menu-btn{gap:0}
 html .bar .burger{width:24px;height:24px;padding:0 5px;gap:4.8px;box-sizing:border-box}
@@ -182,7 +182,7 @@ html .bar .icons svg,.m-search svg{width:24px;height:24px;stroke:currentColor;st
 @media (max-width:768px){
   html:root{--bh:64px}
   html .bar{height:64px;padding:0 16px}
-  html .bar .lockup .wm{height:29px!important}
+  html .bar .lockup .wm{height:31px!important}
   html .bar .icons{gap:12px}
   html .bar .icons .ic-search{display:none}
   .m-search{display:block;opacity:.62}
@@ -207,3 +207,12 @@ html .scrim{background:rgba(160,162,164,.3);-webkit-backdrop-filter:blur(25px);b
   .pdp-side{top:calc(var(--bh) / 1.1)}
   .pdp{padding-top:calc(var(--bh) / 1.1)}
 }
+
+/* Dunkler Rand beim Hochscrollen über das Video hinaus (statt Weiss) */
+body{background:#fff}
+html.top-dark{background:#0b0b0b}
+
+/* Grosses Footer-Logo aus der Vektor-Datei (gestochen scharf statt Pixel-Maske) */
+html .fw-in i{background:none;-webkit-mask:none;mask:none}
+html .fw-in .fl{width:calc(var(--hw) * .5146);background:url(footer-logo.svg) 0 0/100% 100% no-repeat}
+html .fw-in .fs{left:calc(var(--p) + var(--hw) * .5546);width:calc(var(--hw) * 2.6242);background:url(footer-schrift.svg) 0 0/100% 100% no-repeat}

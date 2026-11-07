@@ -236,3 +236,7 @@ const grp=p.cat.split(' ')[1]||p.cat;
 const recs=PRODUCTS.filter(x=>x.id!==p.id).sort((a,b)=>(b.cat.includes(grp))-(a.cat.includes(grp))).slice(0,4);
 root.querySelector('.recs-grid').innerHTML=recs.map(r=>`<a class="rec" href="produkt.html?p=${r.id}"><span class="ph"><img src="${r.colors[0].img[0]}" alt="${r.name}"></span><span class="meta"><span>${r.name}</span><span>${chf(r.price)}</span></span></a>`).join('');
 })();
+
+/* Seiten mit dunklem Anfang: oben dunkler Hintergrund beim Überscrollen, unten weiss */
+(()=>{const top=document.querySelector('.intro,.story');if(!top)return;const h=document.documentElement;
+  const f=()=>h.classList.toggle('top-dark',scrollY<innerHeight);addEventListener('scroll',f,{passive:true});f()})();
