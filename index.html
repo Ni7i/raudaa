@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rauda</title>
 <meta name="description" content="Rauda · روضة. Modern, schlicht und für Muslime. In Zürich gegründet.">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-rauda-w-32.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-rauda-w.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/fav-schwarz-32.png" id="fav-png"><link rel="icon" type="image/svg+xml" href="assets/fav-rauda.svg"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
+<script>(function(){var m=matchMedia("(prefers-color-scheme: dark)"),l=document.getElementById("fav-png");function s(){l.href="assets/fav-"+(m.matches?"weiss":"schwarz")+"-32.png"}s();m.addEventListener&&m.addEventListener("change",s)})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Fraunces:opsz,wght@9..144,400..600&display=swap" rel="stylesheet">
 <style>
@@ -189,7 +190,6 @@ footer{position:relative;overflow:hidden;padding-top:50px}
   .d-panel{padding:22px 24px}
 }
 @media (max-width:560px){
-  .mb-l{display:none}
   .up{font-size:11px}
   .split{grid-template-columns:1fr}
   .pick{width:calc(100% - 36px);margin-top:48px}
@@ -206,7 +206,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 <body>
 
 <header class="bar" id="bar">
-  <div class="left"><button class="menu-btn" data-open aria-label="Menü öffnen"><span class="burger"><i></i><i></i><i></i></span><span class="mb-l">Menü</span></button></div>
+  <div class="left"><button class="menu-btn" data-open aria-label="Menü öffnen"><span class="burger"><i></i><i></i><i></i></span></button></div>
   <a href="#" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
   <div class="right">
     <div class="icons">
