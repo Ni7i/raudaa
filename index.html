@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rauda</title>
 <meta name="description" content="Rauda · روضة. Modern, schlicht und für Muslime. In Zürich gegründet.">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-rauda-32.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-rauda.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-rauda-w-32.png"><link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-rauda-w.png"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Fraunces:opsz,wght@9..144,400..600&display=swap" rel="stylesheet">
 <style>
@@ -39,6 +39,12 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .nav a{position:relative;padding:6px 0}
 .nav a::after,.tab::after{content:"";position:absolute;left:0;right:0;bottom:1px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .nav a:hover::after{transform:scaleX(1)}
+.left{display:flex;align-items:center}
+.menu-btn{display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.07em;text-transform:uppercase}
+.menu-btn:hover{opacity:.6}
+.f-brand{display:flex;flex-direction:column;align-items:center;gap:7px;padding:8px 28px 50px}
+.f-brand img{height:46px;width:auto}
+.f-brand span{font:400 10px/1 "Fraunces",Georgia,serif;letter-spacing:.5em;margin-right:-.5em;text-transform:uppercase}
 .right{grid-column:3;display:flex;justify-content:flex-end;align-items:center;gap:clamp(18px,2vw,30px)}
 .icons{display:flex;align-items:center;gap:22px}
 .icons svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.2;fill:none;display:block}
@@ -182,6 +188,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
   .d-panel{padding:22px 24px}
 }
 @media (max-width:560px){
+  .mb-l{display:none}
   .up{font-size:11px}
   .split{grid-template-columns:1fr}
   .pick img{aspect-ratio:4/5}
@@ -197,24 +204,13 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 <body>
 
 <header class="bar" id="bar">
-  <nav class="nav up" aria-label="Schwestern">
-    <a href="shop.html?cat=abaya">Abāyāt</a>
-    <a href="shop.html?cat=khimar">Khumur</a>
-    <a href="shop.html?cat=niqab">Niqāb</a>
-    <a href="shop.html?cat=kimono">Kimonos</a>
-  </nav>
-  <a href="#" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"><span class="city">Zürich</span></span></a>
+  <div class="left"><button class="menu-btn" data-open aria-label="Menü öffnen"><span class="burger"><i></i><i></i><i></i></span><span class="mb-l">Menü</span></button></div>
+  <a href="#" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
   <div class="right">
-    <nav class="nav up" aria-label="Brüder und mehr">
-      <a href="shop.html?cat=thobe">Thobes</a>
-      <a href="shop.html?cat=kufi">Kufis</a>
-      <a href="shop.html?cat=duft">Autodüfte</a>
-    </nav>
     <div class="icons">
       <a href="shop.html" class="ic-search" aria-label="Suche"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg></a>
       <button class="ic-fav" aria-label="Merkliste" data-fav><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
       <a href="#" aria-label="Warenkorb"><svg viewBox="0 0 24 24"><path d="M4.5 8h15l-1.1 12.5H5.6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></a>
-      <button class="burger" aria-label="Menü öffnen" data-open><i></i><i></i><i></i></button>
     </div>
   </div>
 </header>
@@ -321,6 +317,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     <div><svg viewBox="0 0 26 26"><path d="M13 2.6c-3.8 0-6.2 3-6.2 6.8 0 2.2-.6 4-2 6-1.2 1.7-1.6 4.2-1.4 7.4h19.2c.2-3.2-.2-5.7-1.4-7.4-1.4-2-2-3.8-2-6 0-3.8-2.4-6.8-6.2-6.8z"/><ellipse cx="13" cy="9.8" rx="2.9" ry="3.6"/><path d="M10.3 13.2c1.7 2.4 5.3 3.2 9.1 2.4"/></svg>Weit &amp; blickdicht<span>Stoffe, die bedecken</span></div>
     <div><svg viewBox="0 0 26 26"><path d="M3.5 8.5 13 4l9.5 4.5v10L13 23l-9.5-4.5z"/><path d="M3.5 8.5 13 13l9.5-4.5M13 13v10"/></svg>Gratis Versand<span>Ab CHF 200.– in der Schweiz</span></div>
   </div>
+  <div class="f-brand"><img src="assets/logo-schriftzug.png" alt="Rauda"><span>Zürich</span></div>
   <div class="f-mid">
     <div><h4>Shop</h4><ul><li><a href="shop.html?cat=abaya">Abāyāt</a></li><li><a href="shop.html?cat=khimar">Khumur</a></li><li><a href="shop.html?cat=thobe">Thobes</a></li><li><a href="shop.html?cat=kufi">Kufis</a></li><li><a href="shop.html?cat=duft">Autodüfte</a></li></ul></div>
     <div><h4>Rauda</h4><ul><li><a href="geschichte.html">Unsere Geschichte</a></li><li><a href="#">Journal</a></li><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li></ul></div>
