@@ -99,6 +99,23 @@ document.querySelectorAll('a[aria-label="Warenkorb"]').forEach(a=>{
 render();
 addEventListener('storage',e=>{if(e.key===KEY){try{cart=JSON.parse(e.newValue)||[]}catch(_){cart=[]}render()}});
 
+/* ── Cookie-Hinweis (einmalig) ── */
+(function(){
+  let seen=null;try{seen=localStorage.getItem('rauda-consent')}catch(e){}
+  if(seen)return;
+  document.body.insertAdjacentHTML('beforeend',`<div class="ck" role="dialog" aria-label="Cookies" aria-live="polite">
+    <div class="ck-in">
+      <p class="ck-t up">Cookies bei Rauda</p>
+      <p class="ck-p">Wir verwenden Cookies, damit dein Warenkorb und deine Einstellungen funktionieren. Mit deiner Zustimmung nutzen wir zusätzlich anonyme Statistiken, um Rauda für dich zu verbessern. Mehr dazu in unserer <a href="#">Datenschutzerklärung</a>.</p>
+      <div class="ck-b"><button class="ck-no">Nur notwendige</button><button class="ck-yes">Alle akzeptieren</button></div>
+    </div></div>`);
+  const ck=document.querySelector('.ck');
+  requestAnimationFrame(()=>setTimeout(()=>ck.classList.add('show'),700));
+  const close=v=>{try{localStorage.setItem('rauda-consent',v)}catch(e){}ck.classList.remove('show');setTimeout(()=>ck.remove(),600)};
+  ck.querySelector('.ck-no').onclick=()=>close('notwendig');
+  ck.querySelector('.ck-yes').onclick=()=>close('alle');
+})();
+
 /* ── Kaufansicht (produkt.html) ── */
 const root=document.getElementById('pdp');
 if(!root)return;

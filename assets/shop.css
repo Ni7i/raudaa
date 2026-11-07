@@ -45,6 +45,22 @@
 .c-more{display:block;width:100%;margin-top:14px;padding:6px;font-size:11px;color:#5f5f5f}
 .c-more:hover{color:var(--ink)}
 
+/* Cookie-Hinweis */
+.ck{position:fixed;left:24px;bottom:24px;z-index:60;width:min(420px,calc(100vw - 32px));background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.04);
+  opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.ck.show{opacity:1;transform:none;pointer-events:auto}
+.ck-in{padding:26px 26px 22px}
+.ck-t{font-size:11px;font-weight:500;letter-spacing:.06em}
+.ck-p{margin-top:12px;font-size:12px;line-height:1.65;color:#5f5f5f}
+.ck-p a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.ck-b{display:flex;gap:10px;margin-top:20px}
+.ck-b button{flex:1;padding:13px 10px;border-radius:999px;font-size:12px;letter-spacing:.01em;transition:background .3s,color .3s,border-color .3s}
+.ck-no{border:1px solid #d6d4cf}
+.ck-no:hover{border-color:var(--ink)}
+.ck-yes{background:var(--ink);color:#fff}
+.ck-yes:hover{background:#333}
+@media (max-width:560px){.ck{left:16px;bottom:16px}.ck-in{padding:22px 20px 18px}}
+
 /* Kaufansicht */
 .pdp{display:grid;grid-template-columns:1fr 1fr;padding-top:var(--bh);align-items:start}
 .pdp-gal{display:flex;flex-direction:column;gap:3px}
