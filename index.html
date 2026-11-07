@@ -94,7 +94,7 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .sp.full .cta{color:#fff;z-index:1}
 .sp.full:hover .btn{background:#fff;border-color:#fff;color:var(--ink)}
 .pick{color:#fff;background:#141414}
-.pick{width:100%;margin:72px 0 0}
+.pick{margin:72px 16px 0}
 .pick img{aspect-ratio:21/9;height:auto;object-position:50% 30%}
 .pick::after{content:"";position:absolute;inset:auto 0 0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,.5));pointer-events:none}
 .pick .cta{z-index:1}
@@ -197,7 +197,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 @media (max-width:560px){
   .up{font-size:11px}
   .split{grid-template-columns:1fr}
-  .pick{margin-top:48px}
+  .pick{margin:48px 10px 0}
   .pick img{aspect-ratio:1/1}
   .sp img{top:3%;height:72%}
   .ins-grid{grid-template-columns:1fr;gap:44px}
@@ -217,6 +217,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     <div class="icons">
       <a href="shop.html" class="ic-search" aria-label="Suche"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg></a>
       <button class="ic-fav" aria-label="Merkliste" data-fav><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
+      <button class="ic-acc" aria-label="Kundenkonto" data-acc><svg viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c.9-3.9 3.7-6 7.2-6s6.3 2.1 7.2 6"/></svg></button>
       <a href="#" aria-label="Warenkorb"><svg viewBox="0 0 24 24"><path d="M4.5 8h15l-1.1 12.5H5.6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></a>
     </div>
   </div>
@@ -281,8 +282,8 @@ footer{position:relative;overflow:hidden;padding-top:50px}
       <img src="assets/home/frauen-puppe.jpg" alt="Schwarzer Khimār mit Niqāb auf einer Puppe vor rosa Wand mit Kirschblüten">
       <div class="cta"><div class="cta-in"><span class="cta-t">Frauen</span><span class="btn">Entdecken</span></div></div>
     </a>
-    <a class="sp" href="shop.html?cat=brueder">
-      <img src="assets/home/maenner.jpg" alt="Saudischer Thobe in Grau auf einer Schneiderpuppe">
+    <a class="sp full" href="shop.html?cat=brueder">
+      <img src="assets/home/maenner-puppe.jpg" alt="Schwarzer Thobe mit Kufi auf einer Puppe vor dunkelblauer Wand">
       <div class="cta"><div class="cta-in"><span class="cta-t">Männer</span><span class="btn">Entdecken</span></div></div>
     </a>
   </section>
@@ -290,7 +291,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
   <a class="pick" href="shop.html?cat=acc" aria-label="Ausgewähltes entdecken">
     <picture>
       <source media="(max-width:700px)" srcset="assets/home/ausgewaehlt-hoch.jpg">
-      <img src="assets/home/ausgewaehlt.jpg" alt="Kuppel mit farbigen Fenstern und Kronleuchter in einer Moschee" loading="lazy">
+      <img src="assets/home/ausgewaehlt.jpg" alt="Kuppel mit farbigen Fenstern und Kronleuchter in einer Moschee">
     </picture>
     <div class="cta"><div class="cta-in"><span class="cta-t">Ausgewähltes<span class="cta-s">Tote Bags, Autodüfte und die Madinah Collection</span></span><span class="btn">Entdecken</span></div></div>
   </a>
@@ -304,14 +305,14 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     <h2 id="inspoT">Die Rauda-Linien</h2>
     <p class="lead">Drei Linien, ein Anspruch: weit, blickdicht und mit Sorgfalt für dich ausgewählt.</p>
     <div class="ins-grid">
-      <article class="ins"><a class="ph" href="shop.html?cat=schwestern"><img src="assets/home/linie-essentials.jpg" alt="Khimār in Taupe in einem hellen Innenhof" loading="lazy"></a><h3>Rauda Essentials</h3><p>Schlichte Basismodelle für jeden Tag, sofort verfügbar.</p><a class="more" href="shop.html?cat=schwestern">Essentials entdecken</a></article>
-      <article class="ins"><a class="ph" href="shop.html?cat=khimar"><img src="assets/home/linie-signature.jpg" alt="Khimār in Oliv, Nahaufnahme des Stoffs" loading="lazy"></a><h3>Rauda Signature</h3><p>Besondere Stoffe und Details, auf Bestellung für dich gefertigt.</p><a class="more" href="shop.html?cat=khimar">Signature entdecken</a></article>
-      <article class="ins"><a class="ph" href="shop.html?cat=acc"><img src="assets/home/linie-madinah.jpg" alt="Beleuchtetes Minarett in Madinah mit Vögeln im Abendhimmel" loading="lazy"></a><h3>Madinah Collection</h3><p>Pins, Lesezeichen und kleine Erinnerungen an die Stadt des Propheten ﷺ.</p><a class="more" href="shop.html?cat=acc">Zur Collection</a></article>
+      <article class="ins"><a class="ph" href="shop.html?cat=schwestern"><img src="assets/home/linie-essentials.jpg" alt="Khimār in Taupe in einem hellen Innenhof"></a><h3>Rauda Essentials</h3><p>Schlichte Basismodelle für jeden Tag, sofort verfügbar.</p><a class="more" href="shop.html?cat=schwestern">Essentials entdecken</a></article>
+      <article class="ins"><a class="ph" href="shop.html?cat=khimar"><img src="assets/home/linie-signature.jpg" alt="Khimār in Oliv, Nahaufnahme des Stoffs"></a><h3>Rauda Signature</h3><p>Besondere Stoffe und Details, auf Bestellung für dich gefertigt.</p><a class="more" href="shop.html?cat=khimar">Signature entdecken</a></article>
+      <article class="ins"><a class="ph" href="shop.html?cat=acc"><img src="assets/home/linie-madinah.jpg" alt="Beleuchtetes Minarett in Madinah mit Vögeln im Abendhimmel"></a><h3>Madinah Collection</h3><p>Pins, Lesezeichen und kleine Erinnerungen an die Stadt des Propheten ﷺ.</p><a class="more" href="shop.html?cat=acc">Zur Collection</a></article>
     </div>
   </section>
 
   <section class="story-block" aria-labelledby="storyT">
-    <video muted loop playsinline preload="none" aria-hidden="true"></video>
+    <video muted loop playsinline preload="auto" poster="assets/natur/masjid-poster.jpg" aria-hidden="true"></video>
     <h2 id="storyT">Unsere Geschichte</h2>
     <p>Jahrelang haben wir nach Kleidung gesucht, die wirklich bedeckt, und nur Kompromisse gefunden. Also haben wir den Ort gebaut, den wir selbst gesucht haben.</p>
     <a href="geschichte.html"><span aria-hidden="true">+</span> Weiterlesen</a>
@@ -408,9 +409,10 @@ addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 
 
 
-/* Geschichte: Moschee-Video nur abspielen, wenn sichtbar */
+/* Geschichte: Moschee-Video lädt sofort, spielt wenn sichtbar */
 const sv=story.querySelector('video');
-new IntersectionObserver(([e])=>{if(e.isIntersecting){if(!sv.src)sv.src='assets/natur/masjid-'+q+'.mp4';sv.play().catch(()=>{})}else sv.pause()}).observe(story);
+sv.src='assets/natur/masjid-'+q+'.mp4';sv.load();
+new IntersectionObserver(([e])=>{if(e.isIntersecting)sv.play().catch(()=>{});else sv.pause()}).observe(story);
 </script>
 <script src="assets/shop.js"></script>
 </body>

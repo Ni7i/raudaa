@@ -260,6 +260,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     <div class="icons">
       <a href="shop.html" class="ic-search" aria-label="Suche"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg></a>
       <button class="ic-fav" aria-label="Merkliste" data-fav><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
+      <button class="ic-acc" aria-label="Kundenkonto" data-acc><svg viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="3.7"/><path d="M4.8 20.2c.9-3.9 3.7-6 7.2-6s6.3 2.1 7.2 6"/></svg></button>
       <a href="#" aria-label="Warenkorb"><svg viewBox="0 0 24 24"><path d="M4.5 8h15l-1.1 12.5H5.6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></a>
     </div>
   </div>
@@ -311,7 +312,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 <section class="story" id="ueber" aria-label="Unsere Geschichte">
   <div class="rawdah">
     <div class="r-stick">
-      <video muted loop playsinline preload="none" aria-hidden="true"></video>
+      <video muted loop playsinline preload="auto" poster="assets/natur/masjid-poster.jpg" aria-hidden="true"></video>
       <div class="r-box">
         <p class="r-ar" lang="ar">روضة</p>
         <div class="r-txt">
@@ -405,7 +406,8 @@ function rawdah(){
   rst.style.setProperty('--q',Math.min(1,Math.max(0,(p-.38)/.32)).toFixed(3));
 }
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){addEventListener('scroll',rawdah,{passive:true});addEventListener('resize',rawdah);rawdah()}
-new IntersectionObserver(([e])=>{if(e.isIntersecting){if(!rvid.src)rvid.src='assets/natur/masjid-'+q+'.mp4';rvid.play().catch(()=>{})}else rvid.pause()}).observe(rst);
+rvid.src='assets/natur/masjid-'+q+'.mp4';rvid.load();
+new IntersectionObserver(([e])=>{if(e.isIntersecting)rvid.play().catch(()=>{});else rvid.pause()}).observe(rst);
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add(e.target.tagName==='LI'?'x':'in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -22% 0px'});
 document.querySelectorAll('.swap li,.fade').forEach(el=>io.observe(el));
 

@@ -65,14 +65,27 @@ document.body.insertAdjacentHTML('beforeend',`
 <aside class="cart favs" aria-label="Merkliste" aria-hidden="true">
   <div class="c-head up"><span>Merkliste <em class="f-n"></em></span><button class="c-x" aria-label="Merkliste schliessen">${x}</button></div>
   <div class="c-items f-items"></div>
+</aside>
+<aside class="cart acc" aria-label="Kundenkonto" aria-hidden="true">
+  <div class="c-head up"><span>Mein Konto</span><button class="c-x" aria-label="Kundenkonto schliessen">${x}</button></div>
+  <div class="a-body">
+    <p class="a-t">Willkommen bei Rauda</p>
+    <p class="a-s">Mit deinem Konto siehst du deine Bestellungen, speicherst Adressen und hast deine Merkliste auf allen Geräten.</p>
+    <button class="c-go a-go" data-soon>Anmelden</button>
+    <button class="a-reg" data-soon>Konto erstellen</button>
+    <p class="a-note" hidden>Das Kundenkonto ist bald verfügbar.</p>
+  </div>
 </aside>`);
-const el=document.querySelector('.cart:not(.favs)'),fv=document.querySelector('.cart.favs'),scrim=document.querySelector('.c-scrim');
-const panel=(d,o)=>{[el,fv].forEach(x=>{const on=o&&x===d;x.classList.toggle('open',on);x.setAttribute('aria-hidden',!on)});
+const el=document.querySelector('.cart:not(.favs):not(.acc)'),fv=document.querySelector('.cart.favs'),ac=document.querySelector('.cart.acc'),scrim=document.querySelector('.c-scrim');
+const panel=(d,o)=>{[el,fv,ac].forEach(x=>{const on=o&&x===d;x.classList.toggle('open',on);x.setAttribute('aria-hidden',!on)});
   scrim.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';
   document.querySelectorAll('a[aria-label="Warenkorb"]').forEach(a=>a.classList.toggle('on',o&&d===el));
-  document.querySelectorAll('.ic-fav').forEach(a=>a.classList.toggle('on',o&&d===fv))};
+  document.querySelectorAll('.ic-fav').forEach(a=>a.classList.toggle('on',o&&d===fv));
+  document.querySelectorAll('.ic-acc').forEach(a=>a.classList.toggle('on',o&&d===ac))};
 const open=o=>panel(el,o),openFav=o=>panel(fv,o);
-scrim.onclick=()=>panel(el,false);el.querySelector('.c-x').onclick=()=>open(false);el.querySelector('.c-more').onclick=()=>open(false);fv.querySelector('.c-x').onclick=()=>openFav(false);
+scrim.onclick=()=>panel(el,false);el.querySelector('.c-x').onclick=()=>open(false);el.querySelector('.c-more').onclick=()=>open(false);fv.querySelector('.c-x').onclick=()=>openFav(false);ac.querySelector('.c-x').onclick=()=>panel(ac,false);
+document.querySelectorAll('[data-acc]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();panel(ac,true)}));
+ac.querySelectorAll('[data-soon]').forEach(b=>b.onclick=()=>{ac.querySelector('.a-note').hidden=false});
 addEventListener('keydown',e=>{if(e.key==='Escape')panel(el,false)});
 
 function render(){
@@ -134,7 +147,7 @@ document.querySelectorAll('[data-rail]').forEach(sec=>{
   const g=sec.dataset.rail;
   let items=PRODUCTS.filter(p=>p.cat.split(' ').includes(g)),soon=[];
   if(g==='brueder'){items=items.concat(PRODUCTS.filter(p=>p.id==='tote'));soon=['Kufi','Marokkanischer Thobe','Hose über dem Knöchel']}
-  const card=p=>`<a class="r-card" href="produkt.html?p=${p.id}"><span class="r-img"><img src="${p.colors[0].img[0]}" alt="${p.name}" loading="lazy"></span><span class="r-meta up"><span>${p.name}</span><span>${chf(p.price)}</span></span></a>`;
+  const card=p=>`<a class="r-card" href="produkt.html?p=${p.id}"><span class="r-img"><img src="${p.colors[0].img[0]}" alt="${p.name}"></span><span class="r-meta up"><span>${p.name}</span><span>${chf(p.price)}</span></span></a>`;
   const soonCard=n=>`<div class="r-card soon"><span class="r-img"><span class="r-soon up">Bald erhältlich</span></span><span class="r-meta up"><span>${n}</span><span>&nbsp;</span></span></div>`;
   sec.insertAdjacentHTML('beforeend',`<div class="r-track">${items.map(card).join('')}${soon.map(soonCard).join('')}</div>
   <div class="r-ctl"><button class="r-prev" aria-label="Zurück">${arr(0)}</button><span class="r-bar"><b></b></span><button class="r-next" aria-label="Weiter">${arr(1)}</button></div>`);
@@ -200,7 +213,7 @@ const gal=root.querySelector('.pdp-gal');
 function setColor(c){
   col=c;root.querySelector('.pi-cn').textContent=c.n;
   root.querySelectorAll('.pi-cols button').forEach(b=>b.classList.toggle('on',b.dataset.c===c.n));
-  gal.innerHTML=c.img.map((src,i)=>`<figure><img src="${src}" alt="${p.name} in ${c.n}${i?' – Ansicht '+(i+1):''}"${i?' loading="lazy"':''}></figure>`).join('');
+  gal.innerHTML=c.img.map((src,i)=>`<figure><img src="${src}" alt="${p.name} in ${c.n}${i?' – Ansicht '+(i+1):''}"${i?'':''}></figure>`).join('');
   history.replaceState(null,'','produkt.html?p='+p.id+'&c='+encodeURIComponent(c.n));
   dots.innerHTML=c.img.length>1?c.img.map((_,i)=>'<i'+(i?'':' class="on"')+'></i>').join(''):'';gal.scrollLeft=0;
 }
@@ -221,5 +234,5 @@ const ht=root.querySelector('.pi-heart');const syncH=()=>{const o=RAUDA.isFav(p.
 /* Empfehlungen: gleiche Gruppe zuerst */
 const grp=p.cat.split(' ')[1]||p.cat;
 const recs=PRODUCTS.filter(x=>x.id!==p.id).sort((a,b)=>(b.cat.includes(grp))-(a.cat.includes(grp))).slice(0,4);
-root.querySelector('.recs-grid').innerHTML=recs.map(r=>`<a class="rec" href="produkt.html?p=${r.id}"><span class="ph"><img src="${r.colors[0].img[0]}" alt="${r.name}" loading="lazy"></span><span class="meta"><span>${r.name}</span><span>${chf(r.price)}</span></span></a>`).join('');
+root.querySelector('.recs-grid').innerHTML=recs.map(r=>`<a class="rec" href="produkt.html?p=${r.id}"><span class="ph"><img src="${r.colors[0].img[0]}" alt="${r.name}"></span><span class="meta"><span>${r.name}</span><span>${chf(r.price)}</span></span></a>`).join('');
 })();
