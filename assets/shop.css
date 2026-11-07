@@ -171,7 +171,7 @@
 /* Kopfzeile 1:1 wie Dior: 80px hoch, Menü bei 40px, Logo ~83px breit, Icons 24px im 56px-Raster */
 html:root{--bh:80px}
 html .bar{height:80px;padding:0 36px 0 40px;gap:0}
-html .bar .lockup .wm{height:32px!important;width:auto}
+html .bar .lockup .wm{height:38px!important;width:auto}
 html .bar .left{gap:12px}
 html .bar .menu-btn{gap:0}
 html .bar .burger{width:24px;height:24px;padding:0 5px;gap:4.8px;box-sizing:border-box}
@@ -182,7 +182,7 @@ html .bar .icons svg,.m-search svg{width:24px;height:24px;stroke:currentColor;st
 @media (max-width:768px){
   html:root{--bh:64px}
   html .bar{height:64px;padding:0 16px}
-  html .bar .lockup .wm{height:25px!important}
+  html .bar .lockup .wm{height:29px!important}
   html .bar .icons{gap:12px}
   html .bar .icons .ic-search{display:none}
   .m-search{display:block;opacity:.62}
