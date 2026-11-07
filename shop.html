@@ -92,7 +92,7 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .heart{position:absolute;top:14px;right:14px;z-index:2;width:28px;height:28px;display:grid;place-items:center}
 .heart svg{width:17px;height:17px;stroke:var(--ink);stroke-width:1.1;fill:none;transition:fill .2s}
 .heart.on svg{fill:var(--ink)}
-.prod .meta{padding:14px 14px 46px;text-align:center;line-height:1.45;color:#1c1c1c}
+.prod .meta{padding:13px 14px 44px;text-align:center;font-size:11px;line-height:1.5;color:#1c1c1c}
 .prod h3{font:inherit;letter-spacing:inherit}
 .sws{display:flex;justify-content:center;gap:8px;margin-top:10px}
 .sws button{width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18);outline-offset:2px}
@@ -184,12 +184,13 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 }
 @media (max-width:560px){
   .up{font-size:11px}
-  .prod .meta{padding:11px 8px 34px}
+  .prod .meta{padding:10px 8px 32px;font-size:10px}
   .heart{top:6px;right:6px}
   .f-trust{grid-template-columns:1fr;gap:34px}
   .f-mid{grid-template-columns:1fr 1fr}
 }
 </style>
+<link rel="stylesheet" href="assets/shop.css">
 </head>
 <body>
 
@@ -259,60 +260,60 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     </div>
 
     <div class="grid up" id="grid">
-      <article class="prod" data-cat="abaya schwestern">
-        <a href="#" class="ph"><img src="assets/p/abaya-schwarz.jpg" alt="‘Abāya Classic in Schwarz"></a>
+      <article class="prod" data-id="abaya-classic" data-cat="abaya schwestern">
+        <a href="produkt.html?p=abaya-classic" class="ph"><img src="assets/p/abaya-schwarz.jpg" alt="‘Abāya Classic in Schwarz"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>‘Abāya Classic in Schwarz</h3><p>59 CHF</p></div>
+        <div class="meta"><h3><a href="produkt.html?p=abaya-classic">‘Abāya Classic in Schwarz</a></h3><p>59 CHF</p></div>
       </article>
-      <article class="prod" data-cat="abaya schwestern">
-        <a href="#" class="ph"><img src="assets/p/abaya-weit-grau.jpg" alt="‘Abāya Signature in Grau"></a>
+      <article class="prod" data-id="abaya-signature" data-cat="abaya schwestern">
+        <a href="produkt.html?p=abaya-signature" class="ph"><img src="assets/p/abaya-weit-grau.jpg" alt="‘Abāya Signature in Grau"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>‘Abāya Signature in Grau</h3><p>79 CHF</p></div>
+        <div class="meta"><h3><a href="produkt.html?p=abaya-signature">‘Abāya Signature in Grau</a></h3><p>79 CHF</p></div>
       </article>
-      <article class="prod" data-cat="khimar schwestern" data-name="Khimār mit Niqāb">
-        <a href="#" class="ph"><img src="assets/p/khimar-niqab-schwarz.jpg" alt="Khimār mit Niqāb in Schwarz"></a>
+      <article class="prod" data-id="khimar-niqab" data-cat="khimar schwestern" data-name="Khimār mit Niqāb">
+        <a href="produkt.html?p=khimar-niqab" class="ph"><img src="assets/p/khimar-niqab-schwarz.jpg" alt="Khimār mit Niqāb in Schwarz"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>Khimār mit Niqāb in <span class="cn">Schwarz</span></h3><p>45 CHF</p>
+        <div class="meta"><h3><a href="produkt.html?p=khimar-niqab">Khimār mit Niqāb in <span class="cn">Schwarz</span></a></h3><p>45 CHF</p>
           <div class="sws">
             <button class="on" style="background:#151515" data-img="assets/p/khimar-niqab-schwarz.jpg" data-name="Schwarz" aria-label="Schwarz"></button>
             <button style="background:#59657a" data-img="assets/p/khimar-niqab-grau.jpg" data-name="Grau" aria-label="Grau"></button>
             <button style="background:#454a33" data-img="assets/p/khimar-niqab-oliv.jpg" data-name="Oliv" aria-label="Oliv"></button>
           </div></div>
       </article>
-      <article class="prod" data-cat="khimar schwestern" data-name="Khimār mit Schleife">
-        <a href="#" class="ph"><img src="assets/p/khimar-schleife-hellgrau.jpg" alt="Khimār mit Schleife in Hellgrau"></a>
+      <article class="prod" data-id="khimar-schleife" data-cat="khimar schwestern" data-name="Khimār mit Schleife">
+        <a href="produkt.html?p=khimar-schleife" class="ph"><img src="assets/p/khimar-schleife-hellgrau.jpg" alt="Khimār mit Schleife in Hellgrau"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>Khimār mit Schleife in <span class="cn">Hellgrau</span></h3><p>39 CHF</p>
+        <div class="meta"><h3><a href="produkt.html?p=khimar-schleife">Khimār mit Schleife in <span class="cn">Hellgrau</span></a></h3><p>39 CHF</p>
           <div class="sws">
             <button class="on" style="background:#d9dadc" data-img="assets/p/khimar-schleife-hellgrau.jpg" data-name="Hellgrau" aria-label="Hellgrau"></button>
             <button style="background:#4a4a3c" data-img="assets/p/khimar-schleife-khaki.jpg" data-name="Khaki" aria-label="Khaki"></button>
             <button style="background:#f6f4ee" data-img="assets/p/khimar-schleife-weiss.jpg" data-name="Weiss" aria-label="Weiss"></button>
           </div></div>
       </article>
-      <article class="prod" data-cat="khimar schwestern">
-        <a href="#" class="ph"><img src="assets/p/khimar-taupe.jpg" alt="Khimār Classic in Taupe"></a>
+      <article class="prod" data-id="khimar-classic" data-cat="khimar schwestern">
+        <a href="produkt.html?p=khimar-classic" class="ph"><img src="assets/p/khimar-taupe.jpg" alt="Khimār Classic in Taupe"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>Khimār Classic in Taupe</h3><p>30 CHF</p></div>
+        <div class="meta"><h3><a href="produkt.html?p=khimar-classic">Khimār Classic in Taupe</a></h3><p>30 CHF</p></div>
       </article>
-      <article class="prod" data-cat="kimono schwestern">
-        <a href="#" class="ph"><img src="assets/p/kimono-weiss.jpg" alt="Kimono in Weiss"></a>
+      <article class="prod" data-id="kimono" data-cat="kimono schwestern">
+        <a href="produkt.html?p=kimono" class="ph"><img src="assets/p/kimono-weiss.jpg" alt="Kimono in Weiss"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>Kimono in Weiss</h3><p>65 CHF</p></div>
+        <div class="meta"><h3><a href="produkt.html?p=kimono">Kimono in Weiss</a></h3><p>65 CHF</p></div>
       </article>
-      <article class="prod" data-cat="niqab schwestern">
-        <a href="#" class="ph"><img src="assets/p/niqab-creme.jpg" alt="Niqāb in Crème"></a>
+      <article class="prod" data-id="niqab" data-cat="niqab schwestern">
+        <a href="produkt.html?p=niqab" class="ph"><img src="assets/p/niqab-creme.jpg" alt="Niqāb in Crème"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>Niqāb in Crème</h3><p>19 CHF</p></div>
+        <div class="meta"><h3><a href="produkt.html?p=niqab">Niqāb in Crème</a></h3><p>19 CHF</p></div>
       </article>
-      <article class="prod" data-cat="brueder thobe">
-        <a href="#" class="ph"><img src="assets/p/thobe-grau.jpg" alt="Saudischer Thobe in Grau"></a>
+      <article class="prod" data-id="thobe-saudi" data-cat="brueder thobe">
+        <a href="produkt.html?p=thobe-saudi" class="ph"><img src="assets/p/thobe-grau.jpg" alt="Saudischer Thobe in Grau"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>Saudischer Thobe in Grau</h3><p>59 CHF</p></div>
+        <div class="meta"><h3><a href="produkt.html?p=thobe-saudi">Saudischer Thobe in Grau</a></h3><p>59 CHF</p></div>
       </article>
-      <article class="prod" data-cat="acc">
-        <a href="#" class="ph"><img src="assets/p/tote.jpg" alt="Rauda Tote Bags"></a>
+      <article class="prod" data-id="tote" data-cat="acc">
+        <a href="produkt.html?p=tote" class="ph"><img src="assets/p/tote.jpg" alt="Rauda Tote Bags"></a>
         <button class="heart" aria-label="Merken"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
-        <div class="meta"><h3>Rauda Tote · 3 Farben</h3><p>25 CHF</p></div>
+        <div class="meta"><h3><a href="produkt.html?p=tote">Rauda Tote · 3 Farben</a></h3><p>25 CHF</p></div>
       </article>
       <p class="empty" id="empty" hidden>Bald erhältlich</p>
     </div>
@@ -372,10 +373,12 @@ document.querySelectorAll('.sws button').forEach(b=>b.addEventListener('click',(
   const img=card.querySelector('.ph img');img.style.opacity=0;
   setTimeout(()=>{img.onload=()=>{img.style.opacity=1};img.src=b.dataset.img;img.alt=card.dataset.name+' in '+b.dataset.name},180);
   card.querySelector('.cn').textContent=b.dataset.name;
+  card.querySelectorAll('a[href^="produkt.html"]').forEach(a=>a.href='produkt.html?p='+card.dataset.id+'&c='+encodeURIComponent(b.dataset.name));
 }));
 
 /* Merken */
 document.querySelectorAll('.heart').forEach(h=>h.addEventListener('click',()=>{h.classList.toggle('on');h.setAttribute('aria-pressed',h.classList.contains('on'))}));
 </script>
+<script src="assets/shop.js"></script>
 </body>
 </html>

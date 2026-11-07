@@ -1,0 +1,119 @@
+/* Rauda: Warenkorb und Kaufansicht */
+
+/* Taschen-Symbol mit Zähler */
+.bag{position:relative}
+.bag-n{position:absolute;right:-7px;top:-5px;min-width:15px;height:15px;padding:0 4px;border-radius:8px;font:500 9px/15px var(--sans);text-align:center;letter-spacing:0}
+.bag-n[hidden]{display:none}
+.bar .bag .bag-n{background:#111;color:#fff}
+.bar:not(.solid) .bag .bag-n,.bar.dark .bag .bag-n{background:#fff;color:#111}
+
+/* Warenkorb-Schublade */
+.c-scrim{position:fixed;inset:0;z-index:49;background:rgba(17,17,17,.22);opacity:0;pointer-events:none;transition:opacity .35s ease}
+.c-scrim.open{opacity:1;pointer-events:auto}
+.cart{position:fixed;top:0;right:0;bottom:0;z-index:50;width:min(440px,100vw);background:#fff;display:flex;flex-direction:column;
+  clip-path:inset(0 0 0 100%);visibility:hidden;transition:clip-path .38s cubic-bezier(.6,0,.2,1),visibility 0s .38s}
+.cart.open{clip-path:inset(0);visibility:visible;transition:clip-path .5s cubic-bezier(.6,0,.2,1),visibility 0s}
+.c-head{display:flex;justify-content:space-between;align-items:center;height:66px;padding:0 32px;flex:none;border-bottom:1px solid var(--line)}
+.c-head em{font-style:normal;color:#8f8f8f}
+.c-x svg{width:19px;height:19px;stroke:var(--ink);stroke-width:1.1;display:block}
+.c-ship{padding:18px 32px 20px;flex:none;font-size:12px;color:#5f5f5f}
+.c-ship strong{font-weight:500;color:var(--ink)}
+.c-ship i{display:block;height:2px;margin-top:12px;background:#eeece7;overflow:hidden}
+.c-ship b{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.c-items{flex:1;overflow-y:auto;padding:4px 32px}
+.c-it{display:grid;grid-template-columns:92px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.c-img{display:block;aspect-ratio:2/3;background:var(--tile);overflow:hidden}
+.c-img img{width:100%;height:100%;object-fit:cover}
+.c-info{display:flex;flex-direction:column;font-size:13px;min-width:0}
+.c-name{font-size:13px}
+.c-meta{margin-top:4px;color:#8f8f8f;font-size:12px}
+.c-row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:14px}
+.qty{display:flex;align-items:center;border:1px solid #dcdad5;height:32px}
+.qty button{width:30px;height:100%;font-size:14px;color:#555}
+.qty button:hover{color:var(--ink)}
+.qty span{min-width:22px;text-align:center;font-size:12px}
+.c-rm{align-self:flex-start;margin-top:10px;font-size:11px;color:#8f8f8f;text-decoration:underline;text-underline-offset:3px}
+.c-rm:hover{color:var(--ink)}
+.c-empty{padding:80px 0;text-align:center;color:#5f5f5f}
+.c-empty a{display:inline-block;margin-top:22px;padding-bottom:3px;border-bottom:1px solid currentColor;color:var(--ink)}
+.c-foot{flex:none;padding:20px 32px 28px;border-top:1px solid var(--line)}
+.cart.empty .c-foot{display:none}
+.c-sum{display:flex;justify-content:space-between;font-size:14px}
+.c-note{margin:8px 0 18px;font-size:11px;color:#8f8f8f;line-height:1.5}
+.c-go{display:block;padding:17px;border-radius:999px;background:var(--ink);color:#fff;text-align:center;font-size:13px;letter-spacing:.02em;transition:background .3s}
+.c-go:hover{background:#333}
+.c-more{display:block;width:100%;margin-top:14px;padding:6px;font-size:11px;color:#5f5f5f}
+.c-more:hover{color:var(--ink)}
+
+/* Kaufansicht */
+.pdp{display:grid;grid-template-columns:1fr 1fr;padding-top:var(--bh);align-items:start}
+.pdp-gal{display:flex;flex-direction:column;gap:3px}
+.pdp-gal figure{background:var(--tile);aspect-ratio:2/3;overflow:hidden}
+.pdp-gal img{width:100%;height:100%;object-fit:cover}
+.pdp-side{position:sticky;top:var(--bh);display:flex;justify-content:center;padding:clamp(40px,9vh,96px) 40px 48px}
+.pi{width:min(400px,100%)}
+.pi-top{display:flex;justify-content:space-between;align-items:center}
+.pi-sku{font-size:11px;letter-spacing:.08em;color:#8f8f8f}
+.pi-heart svg{width:18px;height:18px;stroke:var(--ink);stroke-width:1.1;fill:none;display:block;transition:fill .2s}
+.pi-heart.on svg{fill:var(--ink)}
+.pi-name{margin-top:8px;font:400 22px/1.25 var(--sans);letter-spacing:-.01em}
+.pi-price{margin-top:6px;font-size:14px}
+.pi-row{display:flex;justify-content:space-between;align-items:baseline;margin-top:30px;font-size:12px;font-weight:500}
+.pi-row span:last-child,.pi-guide{font-weight:400;color:#5f5f5f}
+.pi-guide{font-size:12px;text-decoration:underline;text-underline-offset:3px}
+.pi-cols{display:flex;gap:10px;margin-top:14px}
+.pi-cols button{width:66px;aspect-ratio:2/3;padding:0;background:var(--tile);outline:1px solid transparent;outline-offset:2px;overflow:hidden;transition:outline-color .2s}
+.pi-cols button img{width:100%;height:100%;object-fit:cover}
+.pi-cols button.on{outline-color:var(--ink)}
+.pi-cols button:hover{outline-color:#bdbbb6}
+.pi-cols button.on:hover{outline-color:var(--ink)}
+.pi-sizes{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pi-sizes button{min-width:56px;height:42px;padding:0 14px;border:1px solid #dcdad5;font-size:12px;transition:border-color .2s,background .2s,color .2s}
+.pi-sizes button:hover{border-color:var(--ink)}
+.pi-sizes button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.pi-sizes.shake{animation:shake .45s}
+@keyframes shake{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+.pi-hint{margin-top:10px;font-size:12px;color:#9a3b2f}
+.pi-add{display:block;width:100%;margin-top:28px;padding:17px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;letter-spacing:.02em;transition:background .3s}
+.pi-add:hover{background:#333}
+.pi-ship{margin-top:14px;font-size:11px;color:#8f8f8f;text-align:center}
+.pi-desc{position:relative;margin-top:40px;max-height:4.9em;overflow:hidden;font-size:13px;line-height:1.7;color:#6b6b6b;transition:max-height .5s ease}
+.pi-desc::after{content:"";position:absolute;inset:auto 0 0;height:2em;background:linear-gradient(rgba(255,255,255,0),#fff);transition:opacity .3s}
+.pi-desc.open{max-height:30em}
+.pi-desc.open::after{opacity:0}
+.pi-more{margin-top:12px;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.pi-acc{margin-top:28px;border-top:1px solid var(--line)}
+.pi-acc details{border-bottom:1px solid var(--line)}
+.pi-acc summary{display:flex;justify-content:space-between;align-items:center;padding:19px 0;font-size:13px;cursor:pointer;list-style:none}
+.pi-acc summary::-webkit-details-marker{display:none}
+.pi-acc summary svg{width:11px;height:11px;stroke:var(--ink);stroke-width:1.2;fill:none;transition:transform .3s}
+.pi-acc details[open] summary svg{transform:rotate(45deg)}
+.pi-acc p,.pi-acc ul{padding:0 0 20px;font-size:12px;line-height:1.7;color:#6b6b6b}
+.pi-acc li{list-style:none}
+.pi-acc li::before{content:"– "}
+.pi-help{display:inline-block;margin-top:22px;font-size:12px;text-decoration:underline;text-underline-offset:3px}
+.pi-help:hover,.pi-more:hover,.pi-guide:hover{opacity:.6}
+.recs{padding:100px 0 40px}
+.recs h2{text-align:center;margin-bottom:34px}
+.recs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 3px}
+.rec .ph{display:block;aspect-ratio:2/3;background:var(--tile);overflow:hidden}
+.rec img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.rec:hover img{transform:scale(1.025)}
+.rec .meta{display:flex;flex-direction:column;gap:2px;padding:12px 10px 36px;text-align:center;font-size:11px;line-height:1.45}
+
+.pdp-dots{display:none}
+@media (max-width:900px){
+  .pdp-dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+  .pdp-dots i{width:5px;height:5px;border-radius:50%;background:#d6d4cf;transition:background .3s}
+  .pdp-dots i.on{background:var(--ink)}
+  .pdp{grid-template-columns:1fr}
+  .pdp-gal{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:2px}
+  .pdp-gal::-webkit-scrollbar{display:none}
+  .pdp-gal figure{flex:0 0 100%;scroll-snap-align:start}
+  .pdp-gal figure:only-child{flex-basis:100%}
+  .pdp-side{position:static;min-height:0;padding:30px 20px 10px}
+  .pi{width:100%}
+  .recs{padding-top:70px}
+  .recs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c-head,.c-ship,.c-items,.c-foot{padding-left:22px;padding-right:22px}
+}

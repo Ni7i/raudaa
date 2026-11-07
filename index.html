@@ -183,6 +183,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
   .f-mid{grid-template-columns:1fr 1fr}
 }
 </style>
+<link rel="stylesheet" href="assets/shop.css">
 </head>
 <body>
 
@@ -360,5 +361,6 @@ addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 const sv=story.querySelector('video');
 new IntersectionObserver(([e])=>{if(e.isIntersecting){if(!sv.src)sv.src='assets/natur/masjid-'+q+'.mp4';sv.play().catch(()=>{})}else sv.pause()}).observe(story);
 </script>
+<script src="assets/shop.js"></script>
 </body>
 </html>
