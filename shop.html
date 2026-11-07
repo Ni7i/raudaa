@@ -28,7 +28,8 @@ button{font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;
 .bar.solid::before{opacity:0}
 .bar.solid.dark{background:rgba(14,14,13,.72);color:#f2f0eb}
 .bar.solid.dark .logo{filter:brightness(0) invert(1)}
-.lockup{display:flex;align-items:center;gap:calc(var(--lh)*.2)}
+.lockup{display:flex;flex-direction:column;align-items:center;gap:2px}
+.lockup .city{font:500 7.5px/1 "Fraunces",Georgia,serif;letter-spacing:.42em;text-transform:uppercase;margin-right:-.42em}
 .lockup .ln{flex:none;width:1px;height:calc(var(--lh)*.78);background:currentColor;opacity:.55}
 .lockup .wm{height:calc(var(--lh)*.85)!important}
 .bar .logo{height:var(--lh);filter:brightness(0) invert(1);transition:filter .4s}
@@ -127,26 +128,31 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 .legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1180px;margin:0 auto;padding:4px 28px 0;font-size:11px;color:var(--grey);text-transform:none;letter-spacing:0}
 .legal a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 
-/* ── Menü (von rechts) ── */
-.scrim{position:fixed;inset:0;z-index:39;background:rgba(17,17,17,.22);opacity:0;pointer-events:none;transition:opacity .35s ease}
+/* ── Menü (links, schwebend wie Dior) ── */
+.scrim{position:fixed;inset:0;z-index:39;background:rgba(20,20,22,.3);-webkit-backdrop-filter:blur(22px) saturate(1.1);backdrop-filter:blur(22px) saturate(1.1);opacity:0;pointer-events:none;transition:opacity .45s ease}
 .scrim.open{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(400px,100vw);background:#fff;padding:0 34px 30px;display:flex;flex-direction:column;overflow-y:auto;
-  clip-path:inset(0 0 0 100%);visibility:hidden;transition:clip-path .38s cubic-bezier(.6,0,.2,1),visibility 0s .38s}
-.drawer.open{clip-path:inset(0);visibility:visible;transition:clip-path .5s cubic-bezier(.6,0,.2,1),visibility 0s}
-.drawer>*{opacity:0;transform:translateY(8px);transition:opacity .15s ease,transform .15s ease}
-.drawer.open>*{opacity:1;transform:none;transition:opacity .45s ease calc(.16s + var(--i,0)*18ms),transform .55s cubic-bezier(.2,.7,.2,1) calc(.16s + var(--i,0)*18ms)}
-.drawer .x{display:flex;justify-content:flex-end;align-items:center;height:66px;flex:none}
-.drawer .x svg{width:20px;height:20px;stroke:var(--ink);stroke-width:1.1}
-.drawer .grp{color:#9a9a9a;margin:26px 0 8px}
-.drawer .grp:first-of-type{margin-top:14px}
-.drawer a.l{display:block;line-height:2.25}
-.drawer a.l span{position:relative}
-.drawer a.l span::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.drawer a.l:hover span::after{transform:scaleX(1)}
-.drawer .small{margin-top:auto;padding-top:24px;display:flex;flex-wrap:wrap;gap:10px 26px;border-top:1px solid var(--line);color:#8f8f8f}
-.drawer .small a{display:flex;align-items:center;gap:10px}
-.drawer .small a:hover{color:var(--ink)}
-.drawer .small svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.2;fill:none}
+.drawer{position:fixed;top:14px;left:14px;bottom:14px;z-index:40;width:min(400px,calc(100vw - 28px));border-radius:12px;background:rgba(241,240,237,.95);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);box-shadow:0 30px 80px rgba(0,0,0,.2);overflow:hidden;
+  opacity:0;transform:translateX(-22px);visibility:hidden;transition:opacity .28s ease,transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s .45s}
+.drawer.open{opacity:1;transform:none;visibility:visible;transition:opacity .35s ease,transform .6s cubic-bezier(.2,.7,.2,1),visibility 0s}
+.d-panel{position:absolute;inset:0;display:flex;flex-direction:column;padding:26px 30px 26px;overflow-y:auto;transition:transform .55s cubic-bezier(.2,.7,.2,1),opacity .35s ease}
+.d-sub{transform:translateX(60px);opacity:0;pointer-events:none}
+.drawer.sub .d-root{transform:translateX(-60px);opacity:0;pointer-events:none}
+.drawer .d-sub.on{transform:none;opacity:1;pointer-events:auto}
+.d-x,.d-back{display:flex;align-items:center;gap:10px;align-self:flex-start;font-size:13px}
+.d-x svg{width:13px;height:13px;stroke:var(--ink);stroke-width:1.4;fill:none}
+.d-back svg{width:7px;height:12px;stroke:var(--ink);stroke-width:1.2;fill:none}
+.d-x:hover,.d-back:hover{opacity:.6}
+.d-sub h3{margin-top:34px;font:400 13px/1 var(--sans);color:#8f8f8f;letter-spacing:.06em;text-transform:uppercase}
+.d-list{display:flex;flex-direction:column;margin-top:40px}
+.d-sub .d-list{margin-top:18px}
+.d-l{display:flex;justify-content:space-between;align-items:center;width:100%;padding:11px 0;font-size:17px;letter-spacing:-.015em;text-align:left;color:var(--ink)}
+.d-l svg{width:7px;height:12px;stroke:currentColor;stroke-width:1.2;fill:none;opacity:.6;transition:transform .3s}
+.d-l:hover{opacity:.6}.d-l:hover svg{transform:translateX(3px)}
+.d-small{margin-top:38px;padding-top:30px;border-top:1px solid rgba(0,0,0,.08);display:flex;flex-direction:column;align-items:flex-start;gap:15px;font-size:13px}
+.d-small a:hover,.d-small button:hover{opacity:.6}
+.d-small .muted{color:#8f8f8f}
+.drawer .d-list>*,.drawer .d-small{opacity:0;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease}
+.drawer.open .d-list>*,.drawer.open .d-small{opacity:1;transform:none;transition:opacity .5s ease calc(.12s + var(--i,0)*30ms),transform .6s cubic-bezier(.2,.7,.2,1) calc(.12s + var(--i,0)*30ms)}
 
 
 .t-link{display:inline-flex;align-items:center;gap:12px;padding-bottom:5px;border-bottom:1px solid currentColor;transition:opacity .3s}
@@ -180,7 +186,8 @@ footer{position:relative;overflow:hidden;padding-top:50px}
   .f-news{grid-column:1/-1;order:-1;margin-bottom:6px}.f-form{max-width:none}
   .legal{padding:4px 18px 0}
   .fw-in{--p:18px}
-  .drawer{padding:0 24px 26px}
+  .drawer{top:10px;left:10px;bottom:10px;width:calc(100vw - 20px)}
+  .d-panel{padding:22px 24px}
 }
 @media (max-width:560px){
   .up{font-size:11px}
@@ -201,7 +208,7 @@ footer{position:relative;overflow:hidden;padding-top:50px}
     <a href="shop.html?cat=niqab" data-cat="niqab">Niqāb</a>
     <a href="shop.html?cat=kimono" data-cat="kimono">Kimonos</a>
   </nav>
-  <a href="index.html" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"></span></a>
+  <a href="index.html" aria-label="Rauda Startseite" style="grid-column:2"><span class="lockup"><img class="logo wm" src="assets/logo-schriftzug.png" alt="Rauda"><span class="city">Zürich</span></span></a>
   <div class="right">
     <nav class="nav up" aria-label="Brüder und mehr">
       <a href="shop.html?cat=thobe" data-cat="thobe">Thobes</a>
@@ -209,6 +216,8 @@ footer{position:relative;overflow:hidden;padding-top:50px}
       <a href="shop.html?cat=duft" data-cat="duft">Autodüfte</a>
     </nav>
     <div class="icons">
+      <a href="shop.html" class="ic-search" aria-label="Suche"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5.3 5.3"/></svg></a>
+      <button class="ic-fav" aria-label="Merkliste" data-fav><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></svg></button>
       <a href="#" aria-label="Warenkorb"><svg viewBox="0 0 24 24"><path d="M4.5 8h15l-1.1 12.5H5.6z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></a>
       <button class="burger" aria-label="Menü öffnen" data-open><i></i><i></i><i></i></button>
     </div>
@@ -216,25 +225,43 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 </header>
 
 <div class="scrim" data-close></div>
-<aside class="drawer up" aria-label="Menü">
-  <div class="x"><button aria-label="Menü schliessen" data-close><svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5 5 19"/></svg></button></div>
-  <div class="grp">Schwestern</div>
-  <a class="l" href="shop.html?cat=abaya" data-close data-cat="abaya"><span>‘Abāyāt</span></a>
-  <a class="l" href="shop.html?cat=khimar" data-close data-cat="khimar"><span>Khumur</span></a>
-  <a class="l" href="shop.html?cat=niqab" data-close data-cat="niqab"><span>Niqāb</span></a>
-  <a class="l" href="shop.html?cat=kimono" data-close data-cat="kimono"><span>Kimonos</span></a>
-  <div class="grp">Brüder</div>
-  <a class="l" href="shop.html?cat=thobe" data-close data-cat="thobe"><span>Thobes</span></a>
-  <a class="l" href="shop.html?cat=kufi" data-close data-cat="kufi"><span>Kufis</span></a>
-  <div class="grp">Mehr</div>
-  <a class="l" href="shop.html?cat=duft" data-close data-cat="duft"><span>Autodüfte</span></a>
-  <a class="l" href="shop.html?cat=acc" data-close data-cat="acc"><span>Accessoires</span></a>
-  <a class="l" href="geschichte.html" data-close><span>Unsere Geschichte</span></a>
-  <div class="small">
-    <a href="#" data-close>Suche</a>
-    <a href="#" data-close>Konto</a>
-    <a href="#" data-close>Merkliste</a>
-    <a href="mailto:info@rauda.ch">Kontakt</a>
+<aside class="drawer" aria-label="Menü">
+  <div class="d-panel d-root">
+    <button class="d-x" data-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>Schliessen</button>
+    <nav class="d-list" aria-label="Kategorien">
+      <button class="d-l" data-sub="frauen">Frauen <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></button>
+      <button class="d-l" data-sub="maenner">Männer <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></button>
+      <a class="d-l" href="shop.html?cat=acc">Accessoires <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="shop.html?cat=duft">Autodüfte <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="shop.html">Alle Produkte <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="geschichte.html">Unsere Geschichte <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+    </nav>
+    <div class="d-small">
+      <button data-fav data-close>Merkliste</button>
+      <a href="mailto:info@rauda.ch?subject=Pers%C3%B6nliche%20Beratung">Persönliche Beratung</a>
+      <a href="mailto:info@rauda.ch">Kontakt</a>
+      <span><span class="muted">Land/Region:</span> Schweiz (Deutsch)</span>
+    </div>
+  </div>
+  <div class="d-panel d-sub" data-sub="frauen">
+    <button class="d-back"><svg viewBox="0 0 7 12" aria-hidden="true"><path d="M6 1 1 6l5 5"/></svg>Zurück</button>
+    <h3>Frauen</h3>
+    <nav class="d-list">
+      <a class="d-l" href="shop.html?cat=schwestern">Alle ansehen <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="shop.html?cat=abaya">‘Abāyāt <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="shop.html?cat=khimar">Khumur <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="shop.html?cat=niqab">Niqāb <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="shop.html?cat=kimono">Kimonos <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+    </nav>
+  </div>
+  <div class="d-panel d-sub" data-sub="maenner">
+    <button class="d-back"><svg viewBox="0 0 7 12" aria-hidden="true"><path d="M6 1 1 6l5 5"/></svg>Zurück</button>
+    <h3>Männer</h3>
+    <nav class="d-list">
+      <a class="d-l" href="shop.html?cat=brueder">Alle ansehen <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="shop.html?cat=thobe">Thobes <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+      <a class="d-l" href="shop.html?cat=kufi">Kufis <svg viewBox="0 0 7 12" aria-hidden="true"><path d="M1 1l5 5-5 5"/></svg></a>
+    </nav>
   </div>
 </aside>
 
@@ -345,11 +372,14 @@ footer{position:relative;overflow:hidden;padding-top:50px}
 <script>
 const bar=document.getElementById('bar');bar.classList.add('solid');
 /* Menü */
-const dr=document.querySelector('.drawer'),scrim=document.querySelector('.scrim');
-[...dr.children].forEach((c,i)=>c.style.setProperty('--i',i));
-const setMenu=o=>{dr.classList.toggle('open',o);scrim.classList.toggle('open',o);document.body.classList.toggle('m-open',o);document.body.style.overflow=o?'hidden':''};
+const dr=document.querySelector('.drawer'),scrim=document.querySelector('.scrim'),burger=document.querySelector('.burger');
+dr.querySelectorAll('.d-root .d-list>*,.d-root .d-small,.d-sub .d-list>*').forEach((c,i)=>c.style.setProperty('--i',i%8));
+const resetSub=()=>{dr.classList.remove('sub');dr.querySelectorAll('.d-sub').forEach(s=>s.classList.remove('on'))};
+const setMenu=o=>{dr.classList.toggle('open',o);scrim.classList.toggle('open',o);burger.classList.toggle('on',o);document.body.style.overflow=o?'hidden':'';if(!o)setTimeout(resetSub,450)};
 document.querySelectorAll('[data-open]').forEach(x=>x.addEventListener('click',()=>setMenu(true)));
 document.querySelectorAll('[data-close]').forEach(x=>x.addEventListener('click',()=>setMenu(false)));
+dr.querySelectorAll('button[data-sub]').forEach(b=>b.addEventListener('click',()=>{dr.classList.add('sub');dr.querySelector('.d-sub[data-sub="'+b.dataset.sub+'"]').classList.add('on')}));
+dr.querySelectorAll('.d-back').forEach(b=>b.addEventListener('click',resetSub));
 addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 
 
@@ -376,8 +406,6 @@ document.querySelectorAll('.sws button').forEach(b=>b.addEventListener('click',(
   card.querySelectorAll('a[href^="produkt.html"]').forEach(a=>a.href='produkt.html?p='+card.dataset.id+'&c='+encodeURIComponent(b.dataset.name));
 }));
 
-/* Merken */
-document.querySelectorAll('.heart').forEach(h=>h.addEventListener('click',()=>{h.classList.toggle('on');h.setAttribute('aria-pressed',h.classList.contains('on'))}));
 </script>
 <script src="assets/shop.js"></script>
 </body>

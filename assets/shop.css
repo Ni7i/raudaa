@@ -45,6 +45,40 @@
 .c-more{display:block;width:100%;margin-top:14px;padding:6px;font-size:11px;color:#5f5f5f}
 .c-more:hover{color:var(--ink)}
 
+/* Kopfzeilen-Icons: dezent, das aktive hebt sich hervor */
+.bar .icons{gap:20px}
+.bar .icons>a,.bar .icons>button{opacity:.62;transition:opacity .3s ease}
+.bar .icons>a:hover,.bar .icons>button:hover,.bar .icons>.on{opacity:1}
+.bar .icons>.on svg{stroke-width:1.6}
+.ic-fav{position:relative}
+.ic-fav.has::after{content:"";position:absolute;top:-1px;right:-3px;width:6px;height:6px;border-radius:50%;background:#a1714b}
+.burger.on{opacity:1}
+.f-go{font-size:12px;text-decoration:underline;text-underline-offset:3px}
+
+/* Produkt-Reihen (wie Fendi) */
+.rails{padding:84px 0 20px}
+.rail-sec+.rail-sec{margin-top:72px}
+.rail-head{display:flex;justify-content:space-between;align-items:baseline;max-width:1368px;margin:0 auto 22px;padding:0 28px}
+.rail-head h2{font-size:16px;line-height:24px;font-weight:500;letter-spacing:-.02em}
+.rail-head a{font-size:12px;text-decoration:underline;text-underline-offset:3px}
+.rail-head a:hover{opacity:.6}
+.r-track{display:flex;gap:14px;max-width:1368px;margin:0 auto;padding:0 28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 28px;scrollbar-width:none}
+.r-track::-webkit-scrollbar{display:none}
+.r-card{flex:0 0 calc((100% - 42px) / 4);scroll-snap-align:start}
+.r-img{display:block;position:relative;aspect-ratio:3/4;background:#efeeeb;overflow:hidden}
+.r-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.r-card:hover .r-img img{transform:scale(1.03)}
+.r-soon{position:absolute;inset:0;display:grid;place-items:center;color:#9a9893;font-size:11px}
+.r-meta{display:flex;flex-direction:column;gap:2px;padding:12px 4px 0;text-align:center;font-size:11px;line-height:1.5}
+.soon .r-meta{color:#9a9893}
+.r-ctl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:30px}
+.r-ctl button{display:grid;place-items:center;width:22px;height:22px}
+.r-ctl svg{width:6px;height:11px;stroke:var(--ink);stroke-width:1.2;fill:none}
+.r-ctl button:hover{opacity:.5}
+.r-bar{position:relative;width:90px;height:1px;background:#d9d7d2;overflow:hidden}
+.r-bar b{position:absolute;left:0;top:0;height:100%;background:var(--ink);transition:transform .2s linear}
+@media (max-width:900px){.r-card{flex-basis:calc((100% - 14px) / 1.7)}.rail-head,.r-track{padding:0 18px}.r-track{scroll-padding:0 18px}.rails{padding-top:64px}}
+
 /* Cookie-Hinweis */
 .ck{position:fixed;left:24px;bottom:24px;z-index:60;width:min(420px,calc(100vw - 32px));background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.04);
   opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1);pointer-events:none}

@@ -61,11 +61,19 @@ document.body.insertAdjacentHTML('beforeend',`
     <a class="c-go" href="#">Zur Kasse</a>
     <button class="c-more up">Weiter einkaufen</button>
   </div>
+</aside>
+<aside class="cart favs" aria-label="Merkliste" aria-hidden="true">
+  <div class="c-head up"><span>Merkliste <em class="f-n"></em></span><button class="c-x" aria-label="Merkliste schliessen">${x}</button></div>
+  <div class="c-items f-items"></div>
 </aside>`);
-const el=document.querySelector('.cart'),scrim=document.querySelector('.c-scrim');
-const open=o=>{el.classList.toggle('open',o);scrim.classList.toggle('open',o);el.setAttribute('aria-hidden',!o);document.body.style.overflow=o?'hidden':''};
-scrim.onclick=()=>open(false);el.querySelector('.c-x').onclick=()=>open(false);el.querySelector('.c-more').onclick=()=>open(false);
-addEventListener('keydown',e=>{if(e.key==='Escape')open(false)});
+const el=document.querySelector('.cart:not(.favs)'),fv=document.querySelector('.cart.favs'),scrim=document.querySelector('.c-scrim');
+const panel=(d,o)=>{[el,fv].forEach(x=>{const on=o&&x===d;x.classList.toggle('open',on);x.setAttribute('aria-hidden',!on)});
+  scrim.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';
+  document.querySelectorAll('a[aria-label="Warenkorb"]').forEach(a=>a.classList.toggle('on',o&&d===el));
+  document.querySelectorAll('.ic-fav').forEach(a=>a.classList.toggle('on',o&&d===fv))};
+const open=o=>panel(el,o),openFav=o=>panel(fv,o);
+scrim.onclick=()=>panel(el,false);el.querySelector('.c-x').onclick=()=>open(false);el.querySelector('.c-more').onclick=()=>open(false);fv.querySelector('.c-x').onclick=()=>openFav(false);
+addEventListener('keydown',e=>{if(e.key==='Escape')panel(el,false)});
 
 function render(){
   const n=count(),t=total();
@@ -97,7 +105,45 @@ document.querySelectorAll('a[aria-label="Warenkorb"]').forEach(a=>{
   a.addEventListener('click',e=>{e.preventDefault();open(true)});
 });
 render();
-addEventListener('storage',e=>{if(e.key===KEY){try{cart=JSON.parse(e.newValue)||[]}catch(_){cart=[]}render()}});
+
+/* ── Merkliste ── */
+const FK='rauda-fav';let favs=[];
+try{favs=JSON.parse(localStorage.getItem(FK))||[]}catch(e){favs=[]}
+const saveF=()=>{try{localStorage.setItem(FK,JSON.stringify(favs))}catch(e){}};
+function renderFav(){
+  fv.querySelector('.f-n').textContent='('+favs.length+')';
+  document.querySelectorAll('.ic-fav').forEach(b=>b.classList.toggle('has',favs.length>0));
+  fv.querySelector('.f-items').innerHTML=!favs.length?'<div class="c-empty"><p>Noch nichts gemerkt.<br>Tippe auf das Herz bei einem Stück, um es hier zu sammeln.</p><a class="up" href="shop.html">Zur Kollektion</a></div>':
+    favs.map(id=>{const p=RAUDA.byId(id);if(!p)return'';return `<div class="c-it"><a href="produkt.html?p=${p.id}" class="c-img"><img src="${p.colors[0].img[0]}" alt=""></a>
+    <div class="c-info"><a href="produkt.html?p=${p.id}" class="c-name">${p.name}</a><p class="c-meta">${chf(p.price)}</p>
+    <div class="c-row"><a class="f-go" href="produkt.html?p=${p.id}">Ansehen</a></div><button class="c-rm" data-unfav="${p.id}">Entfernen</button></div></div>`}).join('');
+  fv.querySelectorAll('[data-unfav]').forEach(b=>b.onclick=()=>RAUDA.toggleFav(b.dataset.unfav));
+  document.querySelectorAll('.prod[data-id] .heart').forEach(h=>{const on=favs.includes(h.closest('.prod').dataset.id);h.classList.toggle('on',on);h.setAttribute('aria-pressed',on)});
+}
+RAUDA.isFav=id=>favs.includes(id);
+RAUDA.toggleFav=id=>{favs=favs.includes(id)?favs.filter(f=>f!==id):favs.concat(id);saveF();renderFav()};
+document.querySelectorAll('[data-fav]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();setTimeout(()=>openFav(true),b.closest('.drawer')?420:0)}));
+document.querySelectorAll('.prod[data-id] .heart').forEach(h=>h.addEventListener('click',()=>RAUDA.toggleFav(h.closest('.prod').dataset.id)));
+renderFav();
+if(/shop\.html/.test(location.pathname))document.querySelectorAll('.ic-search').forEach(a=>a.classList.add('on'));
+addEventListener('storage',e=>{if(e.key===KEY){try{cart=JSON.parse(e.newValue)||[]}catch(_){cart=[]}render()}if(e.key===FK){try{favs=JSON.parse(e.newValue)||[]}catch(_){favs=[]}renderFav()}});
+
+/* ── Produkt-Reihen auf der Startseite (wie Fendi) ── */
+const arr=d=>`<svg viewBox="0 0 7 12" aria-hidden="true"><path d="${d?'M1 1l5 5-5 5':'M6 1 1 6l5 5'}"/></svg>`;
+document.querySelectorAll('[data-rail]').forEach(sec=>{
+  const g=sec.dataset.rail;
+  let items=PRODUCTS.filter(p=>p.cat.split(' ').includes(g)),soon=[];
+  if(g==='brueder'){items=items.concat(PRODUCTS.filter(p=>p.id==='tote'));soon=['Kufi','Marokkanischer Thobe','Hose über dem Knöchel']}
+  const card=p=>`<a class="r-card" href="produkt.html?p=${p.id}"><span class="r-img"><img src="${p.colors[0].img[0]}" alt="${p.name}" loading="lazy"></span><span class="r-meta up"><span>${p.name}</span><span>${chf(p.price)}</span></span></a>`;
+  const soonCard=n=>`<div class="r-card soon"><span class="r-img"><span class="r-soon up">Bald erhältlich</span></span><span class="r-meta up"><span>${n}</span><span>&nbsp;</span></span></div>`;
+  sec.insertAdjacentHTML('beforeend',`<div class="r-track">${items.map(card).join('')}${soon.map(soonCard).join('')}</div>
+  <div class="r-ctl"><button class="r-prev" aria-label="Zurück">${arr(0)}</button><span class="r-bar"><b></b></span><button class="r-next" aria-label="Weiter">${arr(1)}</button></div>`);
+  const t=sec.querySelector('.r-track'),bar=sec.querySelector('.r-bar b'),ctl=sec.querySelector('.r-ctl');
+  const upd=()=>{const max=t.scrollWidth-t.clientWidth,f=Math.min(1,t.clientWidth/t.scrollWidth);bar.style.width=(f*100)+'%';bar.style.transform='translateX('+(max>0?t.scrollLeft/max*(1/f-1)*100:0)+'%)';ctl.style.visibility=max>4?'visible':'hidden'};
+  t.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+  sec.querySelector('.r-prev').onclick=()=>t.scrollBy({left:-t.clientWidth*.8,behavior:'smooth'});
+  sec.querySelector('.r-next').onclick=()=>t.scrollBy({left:t.clientWidth*.8,behavior:'smooth'});
+});
 
 /* ── Cookie-Hinweis (einmalig) ── */
 (function(){
@@ -171,7 +217,7 @@ add.onclick=()=>{
 };
 const desc=root.querySelector('.pi-desc'),more=root.querySelector('.pi-more');
 more.onclick=()=>{const o=desc.classList.toggle('open');more.textContent=o?'Weniger':'Mehr lesen'};
-const ht=root.querySelector('.pi-heart');ht.onclick=()=>{const o=ht.classList.toggle('on');ht.setAttribute('aria-pressed',o)};
+const ht=root.querySelector('.pi-heart');const syncH=()=>{const o=RAUDA.isFav(p.id);ht.classList.toggle('on',o);ht.setAttribute('aria-pressed',o)};syncH();ht.onclick=()=>{RAUDA.toggleFav(p.id);syncH()};
 /* Empfehlungen: gleiche Gruppe zuerst */
 const grp=p.cat.split(' ')[1]||p.cat;
 const recs=PRODUCTS.filter(x=>x.id!==p.id).sort((a,b)=>(b.cat.includes(grp))-(a.cat.includes(grp))).slice(0,4);
