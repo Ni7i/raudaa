@@ -214,5 +214,5 @@ html.top-dark{background:#0b0b0b}
 
 /* Grosses Footer-Logo aus der Vektor-Datei (gestochen scharf statt Pixel-Maske) */
 html .fw-in i{background:none;-webkit-mask:none;mask:none}
-html .fw-in .fl{left:calc(var(--p) - var(--hw) * .2058);top:calc(var(--hw) * -.02);width:calc(var(--hw) * .7204);height:calc(var(--hw) * 1.092);background:url(footer-logo.svg?v=2) 0 0/100% 100% no-repeat}
-html .fw-in .fs{left:calc(var(--p) + var(--hw) * .5546);width:calc(var(--hw) * 2.6242);background:url(footer-schrift.svg?v=2) 0 0/100% 100% no-repeat}
+html .fw-in .fl{left:calc(var(--p) - var(--hw) * .1169);top:calc(var(--hw) * -.02);width:calc(var(--hw) * .7204);height:calc(var(--hw) * 1.092);background:url(footer-logo.svg?v=4) 0 0/100% 100% no-repeat}
+html .fw-in .fs{left:calc(var(--p) + var(--hw) * .6435);width:calc(var(--hw) * 2.6242);background:url(footer-schrift.svg?v=4) 0 0/100% 100% no-repeat}
